@@ -8,29 +8,34 @@ router.get('/', function(req, res, next) {
 
 
 // Create new user
-router.post('/user', (req, res) => {
+router.post('/', (req, res) => {
   var db = require("../models/user_model");
   var Users = db.Mongoose.model('usercollection', db.UserSchema, 'usercollection');
 
-  var user = new Users({
-    "name": req.body.name.substring(0, 150),
-    "email": req.body.email.substring(0, 150),
-    "password": req.body.password.substring(0, 11),
-    "wines": [],
+  Users.find().sort({"_id" : -1}).limit(1).exec(
+    function (e, r) {
+      var id = r[0] ? r[0].id : 0;
+      var user = new Users({
+        "id": id + 1,
+        "name": req.body.name.substring(0, 150),
+        "email": req.body.email.substring(0, 150),
+        "password": req.body.password.substring(0, 150),
+        "wines": [],
+      })
+      user.save(
+        function (f, re) {
+          res.json(re);
+        })
   })
-  user.save(
-    function (f, r) {
-      res.json(r);
-    })
 })
 
 
 // Read user
-router.get('/user/:id?', (req, res) =>{
+router.get('/:id?', (req, res) =>{
   var db = require("../models/user_model");
   var Users = db.Mongoose.model('usercollection', db.UserSchema, 'usercollection');
 
-  Users.find({"_id": req.params.id}).lean().exec(
+  Users.findOne({"id": parseInt(req.params.id)}).lean().exec(
     function (e, user) {
       res.json(user);
     })
@@ -38,11 +43,11 @@ router.get('/user/:id?', (req, res) =>{
 
 
 // update user
-router.patch('/user/:id', (req, res) =>{
+router.patch('/:id', (req, res) =>{
   var db = require("../models/user_model");
   var Users = db.Mongoose.model('usercollection', db.UserSchema, 'usercollection');
   
-  Users.updateOne({_id: req.params.id}, req.body).exec(
+  Users.updateOne({id: parseInt(req.params.id)}, req.body).exec(
     function (f, r) {
       res.json(r);
   })
@@ -50,7 +55,7 @@ router.patch('/user/:id', (req, res) =>{
 
 
 // Delete user
-router.delete('/user/:id', (req, res) =>{
+router.delete('/:id', (req, res) =>{
   var db = require("../models/user_model");
   var Users = db.Mongoose.model('usercollection', db.UserSchema, 'usercollection');
 
@@ -67,9 +72,9 @@ router.post('/login', (req, res) =>{
   var Users = db.Mongoose.model('usercollection', db.UserSchema, 'usercollection');
 
   Users.find({
-    "username": req.body.username.substring(0, 150),
+    "email": req.body.email.substring(0, 150),
     "password": req.body.password.substring(0, 150)
-  }).lean().exec(
+  }).findOne().exec(
     function (e, user) {
       res.json(user);
     })
