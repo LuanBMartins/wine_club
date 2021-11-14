@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 
 // Create new user
 router.post('/', (req, res) => {
-  var db = require("../models/user_model");
+  var db = require("../models/user");
   var Users = db.Mongoose.model('usercollection', db.UserSchema, 'usercollection');
 
   Users.find().sort({"_id" : -1}).limit(1).exec(
@@ -32,7 +32,7 @@ router.post('/', (req, res) => {
 
 // Read user
 router.get('/:id?', (req, res) =>{
-  var db = require("../models/user_model");
+  var db = require("../models/user");
   var Users = db.Mongoose.model('usercollection', db.UserSchema, 'usercollection');
 
   Users.findOne({"id": parseInt(req.params.id)}).lean().exec(
@@ -44,10 +44,10 @@ router.get('/:id?', (req, res) =>{
 
 // update user
 router.patch('/:id', (req, res) =>{
-  var db = require("../models/user_model");
+  var db = require("../models/user");
   var Users = db.Mongoose.model('usercollection', db.UserSchema, 'usercollection');
   
-  Users.updateOne({id: parseInt(req.params.id)}, req.body).exec(
+  Users.findOneAndUpdate({id: parseInt(req.params.id)}, req.body, {new: true}).exec(
     function (f, r) {
       res.json(r);
   })
@@ -56,10 +56,10 @@ router.patch('/:id', (req, res) =>{
 
 // Delete user
 router.delete('/:id', (req, res) =>{
-  var db = require("../models/user_model");
+  var db = require("../models/user");
   var Users = db.Mongoose.model('usercollection', db.UserSchema, 'usercollection');
 
-  Users.find({"_id": parseInt(req.params.id)}).remove().exec(
+  Users.find({"id": parseInt(req.params.id)}).remove().exec(
     function (e, r) {
       res.json(r);
     })
@@ -68,7 +68,7 @@ router.delete('/:id', (req, res) =>{
 
 // Login user
 router.post('/login', (req, res) =>{
-  var db = require("../models/user_model");
+  var db = require("../models/user");
   var Users = db.Mongoose.model('usercollection', db.UserSchema, 'usercollection');
 
   Users.find({

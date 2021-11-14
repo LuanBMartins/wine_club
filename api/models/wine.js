@@ -1,20 +1,18 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/wine');
+mongoose.connect('mongodb://localhost:27017/wine_club');
 
 var wineSchema = new mongoose.Schema({
-    id: { type : String },
+    id: { type : Number },
     name: { type : String, unique : true, required : true},
     producer: { type : String },
-    image: { data: Buffer, contentType: String },
+    image: { type: String },
     country: { type : String },
     type: { type : String },
     grape: { type : String },
-    harmonizing: { type : String },
+    harmonizing: { type : Array },
     score: { type : Number },
-    reviews: [{username: String, review: String, date: String}]
+    reviews: [{user_id: Number, name: String, review: String, date: String, score: Number}]
 }, { collection: 'wine' }
 );
 
 module.exports = { Mongoose: mongoose, WineSchema: wineSchema }
-
-//https://www.geeksforgeeks.org/upload-and-retrieve-image-on-mongodb-using-mongoose/
