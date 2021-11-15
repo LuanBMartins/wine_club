@@ -98,7 +98,7 @@ router.patch('/rate/:id', (req, res) =>{
                         res.json(r);
                     })
             })
-  })
+})
 
 
 // list wines
@@ -110,7 +110,11 @@ router.get('/list', (req, res) =>{
       function (e, wines) {
         res.json(wines);
       })
-  })
+})
+
+router.post('/search/advanced', (req, res) => {
+  console.log('teste');
+})
 
 module.exports = router;
 
