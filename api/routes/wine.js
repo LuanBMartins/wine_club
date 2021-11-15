@@ -112,8 +112,19 @@ router.get('/list', (req, res) =>{
       })
 })
 
-router.post('/search/advanced', (req, res) => {
-  console.log('teste');
+router.post('/search/advanced', async (req, res) => {
+  try {
+    const wineService = require('../services/wineService')
+    const itens = req.body
+    const response = await wineService.searchWine(itens)
+    res.send(response)
+  
+  } catch (error) {
+    if(error.message === 'Filtros indefinidos') 
+      res.status(400).send({erro: error.message})
+    else
+      res.status(500).end()
+  }
 })
 
 module.exports = router;
