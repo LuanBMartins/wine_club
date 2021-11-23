@@ -120,6 +120,7 @@ router.post('/search/advanced', async (req, res) => {
     res.send(response)
   
   } catch (error) {
+    console.log(error);
     if(error.message === 'Filtros indefinidos') 
       res.status(400).send({erro: error.message})
     else
