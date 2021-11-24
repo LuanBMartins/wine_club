@@ -1,5 +1,9 @@
 const Wine = require('../datas/wineData')
+const error = require('../utils/error')
 
+exports.findAll = () => {
+    return Wine.findAll()
+}
 
 exports.searchWine = (itens) => {
     const filters = ['type', 'country', 'grape', 'harmonizing', 'score']
@@ -15,6 +19,6 @@ exports.searchWine = (itens) => {
     if(Object.keys(validFilters).length >= 1){
         return Wine.searchWine(validFilters)
     }else{
-        throw new Error('Filtros indefinidos')
+        throw new error('Campos inexistentes', '400')
     }
 }
