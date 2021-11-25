@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Wine Club</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/wineclub.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+
+</head>
+
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light shadow">
+        <div class="container d-flex justify-content-between align-items-center">
+
+            <a class="navbar-brand h1 align-self-center" href="index.html">
+                Wine Club
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navbarSupportedContent"data-bs-toggle="collapse" data-bs-target="#wc_nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="align-self-center collapse navbar-collapse flex-fill d-lg-flex justify-content-lg-between" id="wc_nav">
+                <div class="flex-fill">
+                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">Sobre</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="wines.html">Vinhos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contato</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar align-self-center d-flex">
+                    <a class="nav-icon d-none d-lg-inline" href="#">
+                        <i class="fa fa-fw fa-search text-white mr-2"></i>
+                    </a>
+
+                    <div class="nav-icon position-relative dropdown">
+                        <button class="dropbtn">
+                            <i class="fa fa-fw fa-user text-white mr-3 fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="/wines">Meus vinhos</a>
+                            <a href="/profile">Minha conta</a>
+                            <a href="#">Sair</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- BANNER PRINCIPAL -->
+    <div class="container">
+        <div class="row p-5">
+            <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                <img class="img-fluid" src="./assets/img/wc-bottles.jpg" alt="">
+            </div>
+            <div class="col-lg-6 mb-0 d-flex align-items-center">
+                <div class="text-align-left align-self-center">
+                    <h1 class="h1 wc-title"><b>Wine Club</b></h1>
+                    <h3 class="h2">Encontre o vinho ideal para você</h3>
+                    <p>
+                        Na <b class="wc-title">Wine Club</b> temos um catálogo completo dos diversos vinhos já experimentados
+                        por nossos usúarios. Acessando nossa página, você pode verificar qual vinho é
+                        ideal para seu gosto. Temos dados dos produtores, países de origem, tipos de uvas,
+                        harmonizações ideais e até mesmo feedback dos próprios usuários.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- MELHORES CLASSIFICAÇÕES -->
+    <section class="wc-classification" id="classficacoes">
+        <div class="container py-5">
+            <div class="row text-center py-3">
+                <div class="col-lg-6 m-auto">
+                    <h1 class="h1">As melhores classificações</h1>
+                    <p>
+                        Abaixo temos uma listagem dos melhores vinhos registrados no Wine Club.
+                        O ranqueamento é feito pelo feedback dos usuários da plataforma.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="card h-100">
+                        <a href="shop-single.html">
+                            <img src="./assets/img/wine1.png" class="card-img-top" alt="...">
+                        </a>
+                        <div class="card-body">
+                            <ul class="list-unstyled d-flex justify-content-between">
+                                <li>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                </li>
+                                <li class="text-muted text-right">3.7</li>
+                            </ul>
+                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">>Nome do Vinho<</a>
+                            <p class="card-text">
+                                O >nome_do_vinho< é produzido por >nome do produtor< em >nome_do_pais<, sendo caracterizado
+                                por ser fabricado a partir da uva >noma_da_uva< caracterizando-o como vinho >tipo_vinho<.
+                            </p>
+                            <p class="text-muted">Avaliações (24)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="card h-100">
+                        <a href="shop-single.html">
+                            <img src="./assets/img/wine2.png" class="card-img-top" alt="...">
+                        </a>
+                        <div class="card-body">
+                            <ul class="list-unstyled d-flex justify-content-between">
+                                <li>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                </li>
+                                <li class="text-muted text-right">3.9</li>
+                            </ul>
+                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">>Nome do Vinho<</a>
+                            <p class="card-text">
+                                O >nome_do_vinho< é produzido por >nome do produtor< em >nome_do_pais<, sendo caracterizado
+                                por ser fabricado a partir da uva >noma_da_uva< caracterizando-o como vinho >tipo_vinho<.
+                            </p>
+                            <p class="text-muted">Avaliações (48)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="card h-100">
+                        <a href="shop-single.html">
+                            <img src="./assets/img/wine3.png" class="card-img-top" alt="...">
+                        </a>
+                        <div class="card-body">
+                            <ul class="list-unstyled d-flex justify-content-between">
+                                <li>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                </li>
+                                <li class="text-muted text-right">5</li>
+                            </ul>
+                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">>Nome do Vinho<</a>
+                            <p class="card-text">
+                                O >nome_do_vinho< é produzido por >nome do produtor< em >nome_do_pais<, sendo caracterizado
+                                por ser fabricado a partir da uva >noma_da_uva< caracterizando-o como vinho >tipo_vinho<.
+                            </p>
+                            <p class="text-muted">Avaliações (74)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Start Footer -->
+    <footer class="wc-bg" id="wc_footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-6 pt-5">
+                    <h2 class="logo h2 pb-3 border-light text-white border-bottom ">Wine Club</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li>
+                            <i class="fas fa-map-marker-alt fa-fw"></i>
+                            Rua Aleatória, 123 - Cidade Aleatória - RD, Brasil
+                        </li>
+                        <li>
+                            <i class="fa fa-phone fa-fw"></i>
+                            <a class="text-decoration-none" href="tel:+55 (35) 91234-1234">+55 (35) 91234-1234</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-envelope fa-fw"></i>
+                            <a class="text-decoration-none" href="mailto:wine_club@xpto.com">wine_club@xpto.com</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-6 pt-5">
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Navegação</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li><a class="text-decoration-none" href="#">Home</a></li>
+                        <li><a class="text-decoration-none" href="#templatemo_search">Busca de vinhos</a></li>
+                        <li><a class="text-decoration-none" href="#classficacoes">Vinhos em destaque</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="w-100 wc-bg-darker py-3">
+            <div class="container">
+                <div class="row pt-2">
+                    <div class="col-12">
+                        <p class="text-left wc-text">
+                            Copyright &copy; 2021 Wine Club
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
