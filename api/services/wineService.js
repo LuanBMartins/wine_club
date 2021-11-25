@@ -1,9 +1,11 @@
 const Wine = require('../datas/wineData')
+const error = require('../utils/error')
 
+exports.findAll = () => {
+    return Wine.findAll()
+}
 
 exports.searchWine = (itens) => {
-    // FALTA FILTRAR CORRETAMENTE POR SCORES
-
     const filters = ['type', 'country', 'grape', 'harmonizing', 'score']
     const validFilters = {}
 
@@ -11,11 +13,12 @@ exports.searchWine = (itens) => {
     filters.forEach(filter => {
         itens[filter] != null && itens[filter] != '' ? validFilters[filter] = itens[filter] : false
     })
+    // Filtro de score
+    itens.score != null && itens.score != '' ? validFilters.score = {$gte: itens.score[0], $lte: itens.score[1]} : false
 
-    // Se ao menos um filtro for informado irá haver continuidade no serviço
     if(Object.keys(validFilters).length >= 1){
         return Wine.searchWine(validFilters)
     }else{
-        throw new Error('Filtros indefinidos')
+        throw new error('Campos inexistentes', '400')
     }
 }
