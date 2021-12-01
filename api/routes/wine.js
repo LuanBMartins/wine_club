@@ -1,11 +1,6 @@
+const wineService = require('../services/wineService')
 var express = require('express');
 var router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
 
 // Create new wine and add to user
 router.post('/', (req, res) => {
@@ -101,29 +96,25 @@ router.patch('/rate/:id', (req, res) =>{
 })
 
 
-// list wines
-router.get('/list', (req, res) =>{
-    var db = require("../models/wine");
-    var Wines = db.Mongoose.model('winecollection', db.WineSchema, 'winecollection');
-  
-    Wines.find({}).select('name').lean().exec(
-      function (e, wines) {
-        res.json(wines);
-      })
+// Retornar somente o nome de todos os vinhos
+router.get('/search/names', async (req, res) =>{
+  try {
+    const response = await wineService.findAll()
+      res.status(200).send(response)
+  } catch (error) {
+    res.status(error.status || 500).send(error.message || 'unexpected error')
+  }
 })
 
+// Busca avançada de vinhos
 router.post('/search/advanced', async (req, res) => {
   try {
-    const wineService = require('../services/wineService')
     const itens = req.body
     const response = await wineService.searchWine(itens)
     res.send(response)
   
   } catch (error) {
-    if(error.message === 'Filtros indefinidos') 
-      res.status(400).send({erro: error.message})
-    else
-      res.status(500).end()
+    res.status(error.status || 500).send(error.message || 'unexpected error')
   }
 })
 
