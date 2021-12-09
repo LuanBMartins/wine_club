@@ -49,7 +49,8 @@ export class UserCreateComponent implements OnInit {
     } else {
       this.apiService.createUser(this.userForm.value).subscribe(
         (res) => {
-          console.log('User successfully created!')
+          window.alert('Cadastro realizado com sucesso!');
+          console.log('Usuário criado com sucesso!');
           this.ngZone.run(() => this.router.navigateByUrl('/users-list'))
         }, (error) => {
           console.log(error);
