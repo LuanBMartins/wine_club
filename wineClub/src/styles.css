@@ -1,0 +1,167 @@
+
+/*https://www.w3schools.com/howto/howto_css_dropdown.asp*/
+/* Dropdown Button */
+
+body, ul, li, p, a, label, input, div {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px !important;
+    font-weight: 300 !important;
+  }
+  
+  .btn-primary,
+  .btn-primary:hover,
+  .btn-primary:active,
+  .btn-primary:visited,
+  .btn-primary:focus {
+      background-color: #5E1224;
+      border-color: #5E1224;
+  }
+  
+  .wc-side .li {
+    text-align: center;
+  }
+  
+  .h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 48px !important;
+    font-weight: 200 !important;
+  }
+  
+  .wc-bg {
+    background-color: #5E1224;
+  }
+  
+  .wc-bg-darker {
+    background-color: #5E1224;
+    filter: brightness(85%);
+  }
+  
+  .wc-classification {
+    background-color: #F5F5F5;
+  }
+  
+  .navbar {
+   background-color: #5E1224;
+  }
+  
+  .wc-title {
+    color: #5E1224;
+  }
+  
+  .wc-text {
+    color: white;
+  }
+  
+  nav .navbar-nav li a{
+    color: white !important;
+  }
+  
+  nav .navbar-nav nav-link a{
+    color: #5E1224;
+  }
+  
+  nav .navbar-brand {
+    color: white !important;
+  }
+  
+  .dropbtn {
+    background-color: #5E1224;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {
+    color: black;
+  }
+  
+  .dropdown:hover .dropdown-content {display: block;}
+  
+  #wc_nav a { color: #212934;}
+  #wc_nav a { color: #212934;}
+  #wc_nav a:hover { color: #69bb7e;}
+  #wc_nav .navbar .nav-icon { margin-right: 20px;}
+  @media (min-width: 768px) {
+    #wc_nav .navbar-nav {max-width: 450px;}
+   }
+   @media (min-width: 992px) {
+     #wc_nav .navbar-nav {max-width: 550px;}
+   }
+  
+  
+  #wc_footer {background-color: #5E1224; color: white}
+  #wc_footer a { color: white;}
+  #wc_footer a:hover { font-weight: bold;}
+  #wc_footer i { color: white;}
+  #wc_footer ul.footer-link-list li { padding-top: 10px;}
+  #wc_footer ul.footer-icons li {
+    width: 2.6em;
+    height: 2.6em;
+    line-height: 2.6em;
+  }
+  
+  #wc_footer .border-light { border-color: #2d343f !important;}
+  
+  
+  /*https://codepen.io/hesguru/pen/BaybqXv*/
+  .rate {
+      float: left;
+      height: 46px;
+      padding: 0 10px;
+  }
+  .rate:not(:checked) > input {
+      position:absolute;
+      top:-9999px;
+  }
+  .rate:not(:checked) > label {
+      float:right;
+      width:1em;
+      overflow:hidden;
+      white-space:nowrap;
+      cursor:pointer;
+      font-size:30px;
+      color:#ccc;
+  }
+  .rate:not(:checked) > label:before {
+      content: '★ ';
+  }
+  .rate > input:checked ~ label {
+      color: #ffc700;
+  }
+  .rate:not(:checked) > label:hover,
+  .rate:not(:checked) > label:hover ~ label {
+      color: #deb217;
+  }
+  .rate > input:checked + label:hover,
+  .rate > input:checked + label:hover ~ label,
+  .rate > input:checked ~ label:hover,
+  .rate > input:checked ~ label:hover ~ label,
+  .rate > label:hover ~ input:checked ~ label {
+      color: #c59b08;
+  }
+  
