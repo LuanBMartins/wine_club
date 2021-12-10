@@ -14,6 +14,8 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  // ----- USER API ------
+
   createUser(data: any): Observable<any> {
     let url = `${this.baseUri}/user`;
     return this.http.post(url, data)
@@ -48,6 +50,17 @@ export class ApiService {
     return this.http.delete(url, { headers: this.headers }).pipe(
       catchError(this.errorHandler)
     )
+  }
+
+  
+  // WINE API
+
+  searchWine(data: any): Observable<any> {
+    let url = `${this.baseUri}/wine/search/advanced`;
+    return this.http.post(url, data)
+      .pipe(
+        catchError(this.errorHandler)
+      )
   }
 
   errorHandler(error: HttpErrorResponse) {

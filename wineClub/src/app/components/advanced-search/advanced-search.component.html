@@ -1,0 +1,91 @@
+
+<div class="row p-5">
+    <div class="col-2">
+        <h3>Busca Avançada</h3>
+        
+        <div class="mt-5">
+            <h5>Tipos de vinho</h5>
+            <br>
+        </div>
+
+        <div class="mt-5">
+            <h5>Intervalo de preço</h5>
+            <br>
+        </div>
+
+        <div class="mt-5">
+            <h5>Nota dos usuários</h5>
+            <br>
+        </div>
+
+        <div class="mt-5">
+            <h5>Região / País</h5>
+            <ng-multiselect-dropdown
+            [placeholder]="'Selecione a região'"
+            [settings]="dropdownSettings"
+            [data]="countriesList"
+            [(ngModel)]="selectedCountries"
+            (onSelect)="onCountrySelect($event)"
+            (onSelectAll)="onCountrySelectAll($event)"
+          >
+          </ng-multiselect-dropdown>
+          <br>
+        </div>
+
+        <div class="mt-5">
+            <h5>Tipo de Uva</h5>
+            <ng-multiselect-dropdown
+            [placeholder]="'Selecione a uva'"
+            [settings]="dropdownSettings"
+            [data]="grapesList"
+            [(ngModel)]="selectedGrapes"
+            (onSelect)="onGrapeSelect($event)"
+            (onSelectAll)="onGrapeSelectAll($event)"
+          >
+          </ng-multiselect-dropdown>
+        </div>
+
+        <div class="mt-5">
+            <h5>Harmozinações</h5>
+            <ng-multiselect-dropdown
+            [placeholder]="'Selecione a harmonização'"
+            [settings]="dropdownSettings"
+            [data]="harmsList"
+            [(ngModel)]="selectedHarms"
+            (onSelect)="onHarmSelect($event)"
+            (onSelectAll)="onHarmSelectAll($event)"
+          >
+          </ng-multiselect-dropdown>
+            <br>
+        </div>
+    </div>
+
+
+    <div class="col-10">
+        <div class="row p-5">
+
+            <div class="col-3">
+                <div class="card" style="width: 20rem;">
+                    <img class="card-img-top" src="./assets/img/wc_sample.jpg">
+                    <div class="card-body">
+                        <h5 class="card-title">Nome do Vinho</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><b>País:</b> country</li>
+                        <li class="list-group-item"><b>Produtor:</b> producer</li>
+                        <li class="list-group-item"><b>Tipo de Uva:</b> grape</li>
+                        <li class="list-group-item"><b>Tipo de Vinho:</b> type</li>
+                        <li class="list-group-item"><b>Harmonizações:</b> harmonizing</li>
+                        <li class="list-group-item"><b>Nota:</b> score</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="#" class="card-link">Detalhes</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
