@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/wine_club');
+mongoose.connect('mongodb+srv://lucasblazzi:senha_trabalho_unifei@cluster0.gojct.mongodb.net/myFirstDatabase?retryWrites=true&w=majority');
 
 var wineSchema = new mongoose.Schema({
     id: { type : Number },
