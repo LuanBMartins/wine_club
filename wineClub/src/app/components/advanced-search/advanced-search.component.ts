@@ -24,6 +24,7 @@ export class AdvancedSearchComponent implements OnInit {
     ) { }
 
   wines: any = [];
+  wines_found: number = 0;
   grapesList: any = [];
   countriesList: any = [];
   harmsList: any = [];
@@ -127,8 +128,8 @@ export class AdvancedSearchComponent implements OnInit {
       singleSelection: false,
       idField: 'item_text',
       textField: 'item_text',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
+      selectAllText: 'Selecionar todos',
+      unSelectAllText: 'Remover seleções',
       itemsShowLimit: 3,
       allowSearchFilter: true
     };
@@ -154,6 +155,7 @@ export class AdvancedSearchComponent implements OnInit {
       console.log(this.searchParams);
       console.log(data);
       this.wines = data;
+      this.wines_found = data.length
     });
   }
 
