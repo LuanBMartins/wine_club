@@ -38,24 +38,26 @@ export class AdvancedSearchComponent implements OnInit {
   ratingCount = 5;
 
 
-  minValue: number = 100;
-  maxValue: number = 400;
+  minValue: number = 0;
+  maxValue: number = 5000;
   options: Options = {
     floor: 0,
-    ceil: 500,
+    ceil: 5000,
+    step: 10,
     translate: (value: number, label: LabelType): string => {
       switch (label) {
         case LabelType.Low:
-          return '<b>Min price:</b> $' + value;
+          return '<b>Minimo:</b> R$' + value;
         case LabelType.High:
-          return '<b>Max price:</b> $' + value;
+          return '<b>Máximo:</b> R$' + value;
         default:
-          return '$' + value;
+          return 'R$' + value;
       }
     }
   };
   
   ngOnInit() {
+    this.wines = this.getWines();
 
     this.grapesList = [
       { item_type: 'grape', item_text: 'Cabernet Sauvignon' },
@@ -70,7 +72,16 @@ export class AdvancedSearchComponent implements OnInit {
       { item_type: 'grape', item_text: 'Semillón' },
       { item_type: 'grape', item_text: 'Sauvignon Blanc' },
       { item_type: 'grape', item_text: 'Barbera' },
+      { item_type: 'grape', item_text: 'Carménère' },
+      { item_type: 'grape', item_text: 'Syrah' },
+      { item_type: 'grape', item_text: 'Tempranillo' },
+      { item_type: 'grape', item_text: 'Petit Verdot' },
+      { item_type: 'grape', item_text: 'Touriga Nacional' },
+      { item_type: 'grape', item_text: 'Sangiovese' },
+      { item_type: 'grape', item_text: 'Riesling' },
+      { item_type: 'grape', item_text: 'Viognier' },
       { item_type: 'grape', item_text: 'Moscato' },
+
     ];
 
     this.countriesList = [
@@ -79,6 +90,18 @@ export class AdvancedSearchComponent implements OnInit {
       { item_type: 'country', item_text: 'Espanha' },
       { item_type: 'country', item_text: 'Argentina' },
       { item_type: 'country', item_text: 'Chile' },
+      { item_type: 'country', item_text: 'Portugal' },
+      { item_type: 'country', item_text: 'Estados Unidos' },
+      { item_type: 'country', item_text: 'Austrália' },
+      { item_type: 'country', item_text: 'Uruguai' },
+      { item_type: 'country', item_text: 'África do Sul' },
+      { item_type: 'country', item_text: 'Alemanha' },
+      { item_type: 'country', item_text: 'Rússia' },
+      { item_type: 'country', item_text: 'Romênia' },
+      { item_type: 'country', item_text: 'Hungria' },
+      { item_type: 'country', item_text: 'Áustria' },
+      { item_type: 'country', item_text: 'Grécia' },
+
     ];
 
     this.harmsList = [
@@ -86,7 +109,9 @@ export class AdvancedSearchComponent implements OnInit {
       { item_type: 'harm', item_text: 'Queijo' },
       { item_type: 'harm', item_text: 'Carne Vermelha' },
       { item_type: 'harm', item_text: 'Frutas' },
-      { item_type: 'harm', item_text: 'Doces' },
+      { item_type: 'harm', item_text: 'Sobremesa' },
+      { item_type: 'harm', item_text: 'Aves' },
+      { item_type: 'harm', item_text: 'Comida Picante' },
     ];
 
     this.typesList = [
@@ -95,6 +120,7 @@ export class AdvancedSearchComponent implements OnInit {
       { item_type: 'type', item_text: 'Branco' },
       { item_type: 'type', item_text: 'Espumante' },
       { item_type: 'type', item_text: 'Fortificado' },
+      { item_type: 'type', item_text: 'Sobremesa' },
     ];
 
     this.dropdownSettings = {
@@ -119,85 +145,107 @@ export class AdvancedSearchComponent implements OnInit {
   }
 
 
-
   get myWines() {
     return this.wines.controls;
   }
 
   getWines() {
     this.apiService.searchWine(this.searchParams).subscribe(data => {
+      console.log(this.searchParams);
       console.log(data);
       this.wines = data;
     });
   }
 
-
   onCountrySelect(item: any) {
-    console.log(item);
     this.searchParams.country.push(item.item_text)
-    console.log(this.searchParams);
     this.getWines();
-    console.log(this.wines);
   }
 
   onCountrySelectAll(itens: any) {
-    console.log(itens);
     this.searchParams.country = explode(itens);
-    console.log(this.searchParams);  
+    this.getWines();
   }
 
-  onCountryDeSelect(item: any) {
-    console.log(item);
+  onCountryDeSelect(value: any) {
+    this.searchParams.country = this.searchParams.country.filter(item => item !== value.item_text);
+    this.getWines();
+  }
+
+  onCountryDeSelectAll() {
+    this.searchParams.country = []
+    this.getWines();
   }
 
   onGrapeSelect(item: any) {
-    console.log(item);
     this.searchParams.grape.push(item.item_text)
-    console.log(this.searchParams);
+    this.getWines();
   }
 
   onGrapeSelectAll(itens: any) {
-    console.log(itens);
     this.searchParams.grape = explode(itens);
-    console.log(this.searchParams);  
+    this.getWines();
+  }
+
+  onGrapeDeSelect(value: any) {
+    this.searchParams.grape = this.searchParams.grape.filter(item => item !== value.item_text);
+    this.getWines();
+  }
+
+  onGrapeDeSelectAll() {
+    this.searchParams.grape = []
+    this.getWines();
   }
 
   onHarmSelect(item: any) {
-    console.log(item);
     this.searchParams.harmonizing.push(item.item_text)
-    console.log(this.searchParams);
+    this.getWines();
   }
 
   onHarmSelectAll(itens: any) {
-    console.log(itens);
     this.searchParams.harmonizing = explode(itens);
-    console.log(this.searchParams);  
+    this.getWines();
+  }
+
+  onHarmDeSelect(value: any) {
+    this.searchParams.harmonizing = this.searchParams.harmonizing.filter(item => item !== value.item_text);
+    this.getWines();
+  }
+
+  onHarmDeSelectAll() {
+    this.searchParams.harmonizing = []
+    this.getWines();
   }
 
   onTypeSelect(item: any) {
-    console.log(item);
-    this.searchParams.type.push(item.item_text)
-    console.log(this.searchParams);
+    this.searchParams.type.push(item.item_text);
+    this.getWines();
   }
 
   onTypeSelectAll(itens: any) {
-    console.log(itens);
     this.searchParams.type = explode(itens);
-    console.log(this.searchParams);  
+    this.getWines();
   }
 
-  lowPriceChange(){
-
+  onTypeDeSelect(value: any) {
+    this.searchParams.type = this.searchParams.type.filter(item => item !== value.item_text);
+    this.getWines();
   }
 
-  highPriceChange(){
+  onTypeDeSelectAll() {
+    this.searchParams.type = []
+    this.getWines();
+  }
 
+  onPriceChange(value: any){
+    this.searchParams.price[0] = value.value;
+    this.searchParams.price[1] = value.highValue;
+    this.getWines();
   }
 
   onRateChange(rate: number){
-    console.log(rate);
     this.searchParams.score = rate;
-    console.log(this.searchParams);  
+    this.getWines();
   }
 
 }
