@@ -116,9 +116,31 @@
                                             [value]=wine.score
                                             [ratingCount]="5"
                                             [disabled]="true"
-                                        ></ng-rating-bar></li>
+                                        ></ng-rating-bar>
+                                        <button (click)="showReviews()" class="card-link card-button">Reviews</button>
+                                        </li>
                                     </ul>
                                 </div>
+                            </div>
+                            <div *ngIf="showReviewsDiv">
+                                <div class="card-footer wc-bg">
+                                </div>
+                                <a *ngFor="let review of wine.reviews">
+                                    <div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item sub"><b>Usuário:</b> {{review.name}}</li>
+                                            <li class="list-group-item sub"><b>Data:</b> {{review.date}}</li>
+                                            <li class="list-group-item sub"><b>Review:</b> {{review.review}}</li>
+                                            <li class="list-group-item sub"><b>Nota:</b>
+                                                <ng-rating-bar
+                                                [value]=review.score
+                                                [ratingCount]="5"
+                                                [disabled]="true"
+                                            ></ng-rating-bar>
+                                        </ul>
+                                    </div>
+                                    <hr style="border: 1px solid #5E1224;">
+                                </a>
                             </div>
                             <div class="card-footer wc-bg">
                             </div>
@@ -126,6 +148,7 @@
                     </div>
                 </div>
             </div>
+            <br><br>
         </a>
     </div>
 
