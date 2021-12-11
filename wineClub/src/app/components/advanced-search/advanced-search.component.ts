@@ -23,6 +23,7 @@ export class AdvancedSearchComponent implements OnInit {
     private apiService: ApiService
     ) { }
 
+  showReviewsDiv: boolean = false
   wines: any = [];
   wines_found: number = 0;
   grapesList: any = [];
@@ -250,4 +251,12 @@ export class AdvancedSearchComponent implements OnInit {
     this.getWines();
   }
 
+  showReviews(){
+    if (this.showReviewsDiv){
+      this.showReviewsDiv=false;
+    }
+    else{
+      this.showReviewsDiv=true;
+    }
+  }
 }

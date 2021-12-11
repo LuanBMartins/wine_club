@@ -115,24 +115,19 @@ body, ul, li, p, a, label, input, div {
   border: black !important;
 }
 
-.multiselect-item-checkbox[_ngcontent-lun-c53] input[type=checkbox][_ngcontent-lun-c53] + div[_ngcontent-lun-c53]:before {
-  box-sizing: content-box !important;
-  content: "" !important;
+.multiselect-item-checkbox:before {
   color: #5E1224 !important;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 14px;
-  height: 14px;
-  margin-top: -9px;
   border: 2px solid #5E1224 !important;
-  text-align: center;
-  transition: .4s;
+  background: #5E1224 !important;
 }
 
-.multiselect-item-checkbox[_ngcontent-iyn-c53] input[type=checkbox][_ngcontent-iyn-c53]:checked + div[_ngcontent-iyn-c53]:before {
-  -webkit-animation: .2s ease-in borderscale;
-  animation: .2s ease-in borderscale;
+.multiselect-item-checkbox:after {
+  color: #5E1224 !important;
+  border: 2px solid #5E1224 !important;
+  background: #5E1224 !important;
+}
+
+.multiselect-item-checkbox:before {
   background: #5E1224 !important;
 }
 
@@ -162,4 +157,17 @@ body, ul, li, p, a, label, input, div {
 .search-result {
   text-align: right;
   margin-bottom: 40px;
+}
+
+.card-button {
+  margin-top: 8px;
+  float: right;
+  background-color: #5E1224;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+}
+
+.sub {
+  font-size: smaller !important;
 }
