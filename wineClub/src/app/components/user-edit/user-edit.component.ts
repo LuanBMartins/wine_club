@@ -24,8 +24,11 @@ export class UserEditComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    console.log(localStorage.getItem('userId'));
+    
     this.updateUser();
-    let id = parseInt(this.actRoute.snapshot.paramMap.get('id'));
+    // let id = parseInt(this.actRoute.snapshot.paramMap.get('id'));
+    let id = parseInt(localStorage.getItem('userId'))
     this.getUser(id);
     this.editForm = this.fb.group({
       name: ['', [Validators.required]],
@@ -68,12 +71,14 @@ export class UserEditComponent implements OnInit {
       return false;
     } else {
       if (window.confirm('Tem certeza de que deseja atualizar os dados?')) {
-        let id = parseInt(this.actRoute.snapshot.paramMap.get('id'));
+        let id = parseInt(localStorage.getItem('userId'));
         this.apiService.updateUser(id, this.editForm.value)
           .subscribe(res => {
             this.router.navigateByUrl('/home');
             window.alert('Usuário atualizado com sucesso!');
             console.log('Usuário atualizado com sucesso!');
+            localStorage.setItem('userName', this.editForm.value.name)
+            location.reload()
           }, (error) => {
             console.log(error)
           })

@@ -1,0 +1,26 @@
+h1 {
+    font-size: 30px;
+    margin: 10px;
+    padding: 20px;
+}
+
+h2 {
+    margin-top: 10px;
+    font-size: 25px;
+}
+
+.titulo-perfil {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.perfil {
+    display: flex;
+    margin: 10px;
+}
+
+.dados, .wine {
+    width: 50%;
+    text-align: center;
+    border: 1px solid;
+}
