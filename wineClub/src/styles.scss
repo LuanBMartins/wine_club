@@ -1,7 +1,4 @@
 
-/*https://www.w3schools.com/howto/howto_css_dropdown.asp*/
-/* Dropdown Button */
-
 body, ul, li, p, a, label, input, div {
     font-family: 'Roboto', sans-serif;
     font-size: 18px !important;
@@ -93,42 +90,76 @@ body, ul, li, p, a, label, input, div {
   }
   
   #wc_footer .border-light { border-color: #2d343f !important;}
-  
-  
-  /*https://codepen.io/hesguru/pen/BaybqXv*/
-  .rate {
-      float: left;
-      height: 46px;
-      padding: 0 10px;
+
+
+  .ngx-slider {
+    background: #5E1224 !important;
   }
-  .rate:not(:checked) > input {
-      position:absolute;
-      top:-9999px;
+
+  .ngx-slider-pointer  {
+    background-color: #5E1224 !important;
   }
-  .rate:not(:checked) > label {
-      float:right;
-      width:1em;
-      overflow:hidden;
-      white-space:nowrap;
-      cursor:pointer;
-      font-size:30px;
-      color:#ccc;
-  }
-  .rate:not(:checked) > label:before {
-      content: '★ ';
-  }
-  .rate > input:checked ~ label {
-      color: #ffc700;
-  }
-  .rate:not(:checked) > label:hover,
-  .rate:not(:checked) > label:hover ~ label {
-      color: #deb217;
-  }
-  .rate > input:checked + label:hover,
-  .rate > input:checked + label:hover ~ label,
-  .rate > input:checked ~ label:hover,
-  .rate > input:checked ~ label:hover ~ label,
-  .rate > label:hover ~ input:checked ~ label {
-      color: #c59b08;
-  }
-  
+
+  .ngx-slider .ngx-slider-selection {
+    z-index: 2;
+    background: #5E1224 !important;
+    border-radius: 2px;
+}
+
+.ngx-slider .ngx-slider-pointer.ngx-slider-active:after  {
+  background-color: #3f000f !important;
+}
+
+.selected-item {
+  background-color: #5E1224 !important;
+  border: black !important;
+}
+
+.multiselect-item-checkbox[_ngcontent-lun-c53] input[type=checkbox][_ngcontent-lun-c53] + div[_ngcontent-lun-c53]:before {
+  box-sizing: content-box !important;
+  content: "" !important;
+  color: #5E1224 !important;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  margin-top: -9px;
+  border: 2px solid #5E1224 !important;
+  text-align: center;
+  transition: .4s;
+}
+
+.multiselect-item-checkbox[_ngcontent-iyn-c53] input[type=checkbox][_ngcontent-iyn-c53]:checked + div[_ngcontent-iyn-c53]:before {
+  -webkit-animation: .2s ease-in borderscale;
+  animation: .2s ease-in borderscale;
+  background: #5E1224 !important;
+}
+
+.card-horizontal {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.card-image-slot {
+  max-height:100%; 
+  width: 400px;
+}
+
+.card-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; 
+  max-height:350px; 
+  max-width:100%;
+}
+
+.wine-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.search-result {
+  text-align: right;
+  margin-bottom: 40px;
+}
