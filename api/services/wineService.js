@@ -10,8 +10,8 @@ exports.searchWine = (itens) => {
     const validFilters = []
 
     // Analisando quais filtros foram informados
-    filters.forEach(filter => {
-        itens[filter] != null && itens[filter] != '' && itens[filter] != [] ? validFilters.push({filter: {$in: itens[filter]}}) : false
+    filters.forEach(item => {
+        itens[item] != null && itens[item] != '' && itens.item != [] ? validFilters.push({[item]: {$in: itens[item]}}) : false
     })
     // Filtro de score
     itens.score != null && itens.score != '' && itens.score != [] ? validFilters.push({'score': {$lte: itens.score}}) : false
@@ -20,6 +20,6 @@ exports.searchWine = (itens) => {
     if(Object.keys(validFilters).length >= 1){
         return Wine.searchWine({$and: validFilters})
     }else{
-        throw new error('Campos inexistentes', '400')
+        return Wine.searchWine({})
     }
 }

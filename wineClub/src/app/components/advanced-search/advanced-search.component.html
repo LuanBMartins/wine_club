@@ -1,6 +1,6 @@
 
 <div class="row p-5">
-    <div class="col-2">
+    <div class="col-2 wc-search">
         <h3>Busca Avançada</h3>
         
         <div class="mt-5">
@@ -11,6 +11,8 @@
             [data]="typesList"
             (onSelect)="onTypeSelect($event)"
             (onSelectAll)="onTypeSelectAll($event)"
+            (onDeSelect)="onTypeDeSelect($event)"
+            (onDeSelectAll)="onTypeDeSelectAll()"
           >
           </ng-multiselect-dropdown>
             <br>
@@ -18,13 +20,12 @@
 
         <div class="mt-5">
             <h5>Intervalo de preço</h5>
-            <!-- <ngx-slider 
+            <ngx-slider 
                 [(value)]="minValue" 
                 [(highValue)]="maxValue" 
                 [options]="options"
-                (valueChange)="lowPriceChange"
-                (highValueChange)="highPriceChange">
-            </ngx-slider> -->
+                (userChangeEnd)="onPriceChange($event)">
+            </ngx-slider>
             <br>
         </div>
 
@@ -48,8 +49,9 @@
             [settings]="dropdownSettings"
             [data]="countriesList"
             (onSelect)="onCountrySelect($event)"
-            (onDeSelect)="onCountryDeSelect($event)"
             (onSelectAll)="onCountrySelectAll($event)"
+            (onDeSelect)="onCountryDeSelect($event)"
+            (onDeSelectAll)="onCountryDeSelectAll()"
           >
           </ng-multiselect-dropdown>
           <br>
@@ -63,6 +65,8 @@
             [data]="grapesList"
             (onSelect)="onGrapeSelect($event)"
             (onSelectAll)="onGrapeSelectAll($event)"
+            (onDeSelect)="onGrapeDeSelect($event)"
+            (onDeSelectAll)="onGrapeDeSelectAll()"
           >
           </ng-multiselect-dropdown>
         </div>
@@ -75,6 +79,8 @@
             [data]="harmsList"
             (onSelect)="onHarmSelect($event)"
             (onSelectAll)="onHarmSelectAll($event)"
+            (onDeSelect)="onHarmDeSelect($event)"
+            (onDeSelectAll)="onHarmDeSelectAll()"
           >
           </ng-multiselect-dropdown>
             <br>
@@ -94,7 +100,7 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item"><b>País:</b> {{wine.country}}</li>
                             <li class="list-group-item"><b>Produtor:</b> {{wine.producer}}</li>
-                            <li class="list-group-item"><b>Tipo de Uva:</b> {{wine.name}}</li>
+                            <li class="list-group-item"><b>Tipo de Uva:</b> {{wine.grape}}</li>
                             <li class="list-group-item"><b>Tipo de Vinho:</b> {{wine.type}}</li>
                             <li class="list-group-item"><b>Harmonizações:</b> {{wine.harmonizing}}</li>
                             <li class="list-group-item"><b>Nota:</b>
