@@ -18,6 +18,7 @@ import { AdvancedSearchComponent } from './components/advanced-search/advanced-s
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { UserProfileWineComponent } from './components/user-profile-wine/user-profile-wine.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     LoginComponent,
     LogoutComponent,
     UserProfileComponent,
+    UserProfileWineComponent,
   ],
   imports: [
     BrowserModule,
