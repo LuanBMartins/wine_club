@@ -17,6 +17,7 @@ import { ApiService } from './service/api.service';
 import { AdvancedSearchComponent } from './components/advanced-search/advanced-search.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { LogoutComponent } from './components/logout/logout.component';
     AdvancedSearchComponent,
     LoginComponent,
     LogoutComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
