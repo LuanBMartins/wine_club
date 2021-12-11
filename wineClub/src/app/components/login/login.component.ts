@@ -3,16 +3,16 @@ import { ApiService } from './../../service/api.service';
 import { Component, OnInit, NgZone } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from "@angular/forms";
 
-@Component({
-  selector: 'app-user-create',
-  templateUrl: './user-create.component.html',
-  styleUrls: ['./user-create.component.css']
-})
 
-export class UserCreateComponent implements OnInit {  
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
+})
+export class LoginComponent implements OnInit {
   submitted = false;
-  userForm: FormGroup;
-  
+  loginForm: FormGroup;
+
   constructor(
     public fb: FormBuilder,
     private router: Router,
@@ -25,37 +25,35 @@ export class UserCreateComponent implements OnInit {
   ngOnInit() { }
 
   mainForm() {
-    this.userForm = this.fb.group({
-      name: ['', [Validators.required]],
+    this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       password: ['', [Validators.required]],
     })
   }
 
-  updateProfile(e: any){
-    this.userForm.get('designation').setValue(e, {
-      onlySelf: true
-    })
-  }
-
   get myForm(): { [key: string]: AbstractControl; }{
-    return this.userForm.controls;
+    return this.loginForm.controls;
   }
 
   onSubmit() {
     this.submitted = true;
-    if (!this.userForm.valid) {
+    if (!this.loginForm.valid) {
       return false;
     } else {
-      this.apiService.createUser(this.userForm.value).subscribe(
+      this.apiService.login(this.loginForm.value).subscribe(
         (res) => {
           if (res) {
-            window.alert('Cadastro realizado com sucesso!');
-            console.log('Usuário criado com sucesso!');
-            this.ngZone.run(() => this.router.navigateByUrl('/login'))
+            window.alert('Login realizado com sucesso!');
+            localStorage.setItem('userId', res.id);
+            localStorage.setItem('userName', res.name);
+            this.router.navigate(['advanced-search'])
+            .then(() => {
+              window.location.reload();
+            });
           }
           else {
-            window.alert('Esse usuário já existe! Tente novamente.');
+            window.alert('Usuário não encontrado!');
+            console.log(res);
           }
         }, (error) => {
           console.log(error);

@@ -6,5 +6,6 @@ exports.findAll = () => {
 }
 
 exports.searchWine = (itens) => {
-    return Wines.find(itens)
+    console.log(itens);
+    return Wines.find(itens, { _id: 0 })
 }
