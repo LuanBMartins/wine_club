@@ -110,6 +110,7 @@ router.get('/search/names', async (req, res) =>{
 router.post('/search/advanced', async (req, res) => {
   try {
     const itens = req.body
+    console.log(itens)
     const response = await wineService.searchWine(itens)
     console.log(response);
     res.send(response)
@@ -120,11 +121,3 @@ router.post('/search/advanced', async (req, res) => {
 })
 
 module.exports = router;
-
-
-// wine crud
-// wine login
-// wine crud
-// wine list by register
-// search suggest?
-// advanced search
