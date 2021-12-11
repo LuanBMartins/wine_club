@@ -70,12 +70,13 @@ router.delete('/:id', (req, res) =>{
 router.post('/login', (req, res) =>{
   var db = require("../models/user");
   var Users = db.Mongoose.model('usercollection', db.UserSchema, 'usercollection');
-
+  console.log(req.body)
   Users.find({
     "email": req.body.email.substring(0, 150),
     "password": req.body.password.substring(0, 150)
   }).findOne().exec(
     function (e, user) {
+      console.log(user);
       res.json(user);
     })
 })

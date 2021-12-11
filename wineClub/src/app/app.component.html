@@ -15,13 +15,72 @@
 </head>
 
 <nav class="navbar navbar-expand-lg navbar-light shadow">
-  <div class="container d-flex justify-content-between align-items-center">
+<div class="container d-flex justify-content-between align-items-center">
 
-      <a class="navbar-brand h1 align-self-center" href="advanced-search">
-          Wine Club
-      </a>
+    <a class="navbar-brand h1 align-self-center" href="advanced-search">
+        Wine Club
+    </a>
 
-  </div>
+    <div *ngIf="!userId" class="d-flex navbar-brand h1 align-self-center mx-4 mb-3 mb-lg-4">
+        <a class="btn btn-primary btn-lg" href="/register">Registre-se</a>
+        <a class="btn btn-primary btn-lg" href="/login">Login</a>
+    </div>
+    
+    <div *ngIf="userId" class="d-flex navbar-brand h1 mx-4 mb-3 mb-lg-4 align-self-center ">
+        <a class="btn btn-primary btn-lg">Olá, {{name}}</a>
+        <a class="btn btn-primary btn-lg" href="/profile">Meu perfil</a>
+        <a class="btn btn-primary btn-lg" href="/logout">Log out</a>
+    </div>
+
+</div>
 </nav>
 
 <router-outlet></router-outlet>
+
+<footer class="wc-bg" id="wc_footer">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-6 pt-5">
+                <h2 class="logo h2 pb-3 border-light text-white border-bottom ">Wine Club</h2>
+                <ul class="list-unstyled text-light footer-link-list">
+                    <li>
+                        <i class="fas fa-map-marker-alt fa-fw"></i>
+                        Rua Aleatória, 123 - Cidade Aleatória - RD, Brasil
+                    </li>
+                    <li>
+                        <i class="fa fa-phone fa-fw"></i>
+                        <a class="text-decoration-none" href="tel:+55 (35) 91234-1234">+55 (35) 91234-1234</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-envelope fa-fw"></i>
+                        <a class="text-decoration-none" href="mailto:wine_club@xpto.com">wine_club@xpto.com</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-6 pt-5">
+                <h2 class="h2 text-light border-bottom pb-3 border-light">Navegação</h2>
+                <ul class="list-unstyled text-light footer-link-list">
+                    <li><a class="text-decoration-none" href="/">Home</a></li>
+                    <li><a class="text-decoration-none" href="/register">Registre-se</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="w-100 wc-bg-darker py-3">
+        <div class="container">
+            <div class="row pt-2">
+                <div class="col-12">
+                    <p class="text-left wc-text">
+                        Copyright &copy; 2021 Wine Club
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>

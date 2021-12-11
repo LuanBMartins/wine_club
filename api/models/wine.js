@@ -11,6 +11,7 @@ var wineSchema = new mongoose.Schema({
     grape: { type : String },
     harmonizing: { type : Array },
     score: { type : Number },
+    price: { type : Number },
     reviews: [{user_id: Number, name: String, review: String, date: String, score: Number}]
 }, { collection: 'wine' }
 );

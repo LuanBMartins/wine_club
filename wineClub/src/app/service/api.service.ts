@@ -52,6 +52,13 @@ export class ApiService {
     )
   }
 
+  login(data: any): Observable<any> {
+    let url = `${this.baseUri}/user/login`;
+    return this.http.post(url, data)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
   
   // WINE API
 

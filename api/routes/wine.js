@@ -111,6 +111,7 @@ router.post('/search/advanced', async (req, res) => {
   try {
     const itens = req.body
     const response = await wineService.searchWine(itens)
+    console.log(response);
     res.send(response)
   
   } catch (error) {
