@@ -11,7 +11,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'advanced-search' },
   { path: 'register', component: UserCreateComponent },
-  { path: 'edit/:id', component: UserEditComponent },
+  { path: 'edit', component: UserEditComponent },
   { path: 'advanced-search', component: AdvancedSearchComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
