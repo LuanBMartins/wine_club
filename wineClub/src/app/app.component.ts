@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'wineClub';
+  userId = localStorage.getItem('userId');
+  name = localStorage.getItem('userName');
 }
 

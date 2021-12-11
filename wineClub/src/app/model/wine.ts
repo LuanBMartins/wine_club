@@ -16,5 +16,6 @@ export class Wine {
     grape: string;
     harmonizing: Array<string>;;
     score: number;
+    price: number;
     reviews: Array<Review>;
 }

@@ -5,6 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { NgRatingBarModule } from 'ng-rating-bar';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
@@ -13,6 +15,8 @@ import { UserEditComponent } from './components/user-edit/user-edit.component';
 
 import { ApiService } from './service/api.service';
 import { AdvancedSearchComponent } from './components/advanced-search/advanced-search.component';
+import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +24,8 @@ import { AdvancedSearchComponent } from './components/advanced-search/advanced-s
     UserCreateComponent,
     UserEditComponent,
     AdvancedSearchComponent,
+    LoginComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +34,8 @@ import { AdvancedSearchComponent } from './components/advanced-search/advanced-s
     FormsModule,
     HttpClientModule,
     NgMultiSelectDropDownModule.forRoot(),
+    NgxSliderModule,
+    NgRatingBarModule
   ],
   providers: [
     ApiService
