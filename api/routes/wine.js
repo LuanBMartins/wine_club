@@ -120,4 +120,16 @@ router.post('/search/advanced', async (req, res) => {
   }
 })
 
+router.post('/search/wines', async (req, res) => {
+  try {
+    const ids = req.body.ids
+    const response = await wineService.searchId(ids)
+    console.log(response);
+    res.send(response)
+  
+  } catch (error) {
+    res.status(error.status || 500).send(error.message || 'unexpected error')
+  }
+})
+
 module.exports = router;

@@ -23,3 +23,8 @@ exports.searchWine = (itens) => {
         return Wine.searchWine({})
     }
 }
+
+exports.searchId = (id) => {
+    return Wine.searchId({id: {$in: id}})
+}
+

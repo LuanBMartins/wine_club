@@ -9,3 +9,8 @@ exports.searchWine = (itens) => {
     console.log(itens);
     return Wines.find(itens, { _id: 0 })
 }
+
+exports.searchId = (consult) => {
+    console.log(consult);
+    return Wines.find(consult)
+}
