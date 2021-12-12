@@ -35,6 +35,15 @@ export class UserProfileWineCreateComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onFileInput(event: any | null): void {
+    if(event){
+      const file: File = event[0]
+
+      const data = new FormData()
+      data.append('image', file, 'wine')
+      this.wineForm.value.image = data
+    }
+  } 
 
 
   get myForm(): { [key: string]: AbstractControl; }{
@@ -42,29 +51,30 @@ export class UserProfileWineCreateComponent implements OnInit {
   }
 
   onSubmit() {
+
     this.submitted = true;
-    const dataValid = ['name', 'producer', 'country', 'grape', 'type', 'price', 'harmonizing']
+    const dataValid = ['name', 'producer', 'country', 'grape', 'type', 'price', 'harmonizing', 'image']
     const filter = dataValid.filter(item => !this.wineForm.value[item])
-    
-    const invalid = filter.join(',')
-    
     if(filter.length >= 1){
-      window.alert(`Campos obrigatórios que ainda não foram preenchidos: ${invalid}`)
+      window.alert(`Por favor preencher todos os campos!`)
+      return false;
     }
     else if (!this.wineForm.valid) {
       return false;
     } 
     else 
     {
-      this.apiService.createUser(this.wineForm.value).subscribe(
+      console.log(this.wineForm.value);
+
+      this.apiService.createWine(this.wineForm.value).subscribe(
         (res) => {
           if (res) {
             window.alert('Cadastro realizado com sucesso!');
-            console.log('Usuário criado com sucesso!');
-            this.ngZone.run(() => this.router.navigateByUrl('/login'))
+            console.log('Vinho criado com sucesso!');
+            this.ngZone.run(() => this.router.navigateByUrl('/profile/wine'))
           }
-          else {
-            window.alert('Esse usuário já existe! Tente novamente.');
+          else {            
+            window.alert('Erro ao cadastrar! Tente novamente.');
           }
         }, (error) => {
           console.log(error);

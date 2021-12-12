@@ -90,7 +90,13 @@
                         <div class="d-flex flex-row align-items-center mb-4">
                             <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                             <div class="form-outline flex-fill mb-0">
-                                <input type="file" id="inputRot" class="form-control" formControlName="image"/>
+                                <input type="file" id="inputRot" class="form-control" formControlName="image"
+                                name="image"
+                                accept="image/*"
+                                enctype="multipart/form-data"
+                                #fileInput (change)="onFileInput(fileInput.files)"
+                                id="inputRot" class="form-control" formControlName="image"
+                                />
                                 <label class="form-label" for="inputPrice">Rótulo</label>
                             </div>
                         </div>

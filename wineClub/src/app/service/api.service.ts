@@ -78,6 +78,15 @@ export class ApiService {
       )
   }
 
+  createWine(data: any): Observable<any> {
+    const url = `${this.baseUri}/wine`
+
+    return this.http.post(url, data)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
   errorHandler(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
