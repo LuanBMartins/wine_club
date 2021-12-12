@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
+    "postinstall": "ng build --aot --prod",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -25,7 +26,15 @@
     "ngx-slider": "0.0.5",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.4",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "mongoose": "^6.0.12",
+    "morgan": "~1.9.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.0.0",
@@ -39,6 +48,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "typescript": "~4.4.3"
+    "typescript": "~4.4.3",
+    "nodemon": "^2.0.15"
   }
 }

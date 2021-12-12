@@ -1,0 +1,154 @@
+
+<div class="row p-5">
+    <div class="col-2 wc-search">
+        <h3>Busca Avançada</h3>
+        
+        <div class="mt-5">
+            <h5>Tipos de vinho</h5>
+            <ng-multiselect-dropdown
+            [placeholder]="'Selecione o tipo'"
+            [settings]="dropdownSettings"
+            [data]="typesList"
+            (onSelect)="onTypeSelect($event)"
+            (onSelectAll)="onTypeSelectAll($event)"
+            (onDeSelect)="onTypeDeSelect($event)"
+            (onDeSelectAll)="onTypeDeSelectAll()"
+          >
+          </ng-multiselect-dropdown>
+            <br>
+        </div>
+
+        <div class="mt-5">
+            <h5>Intervalo de preço</h5>
+            <ngx-slider 
+                [(value)]="minValue" 
+                [(highValue)]="maxValue" 
+                [options]="options"
+                (userChangeEnd)="onPriceChange($event)">
+            </ngx-slider>
+            <br>
+        </div>
+
+        <div class="mt-5">
+            <h5>Nota dos usuários</h5>
+            <ng-rating-bar 
+            [(value)]="value" 
+            [ratingCount]="ratingCount"
+            [resetAble]="true"
+            colorActive="#5E1224" 
+            colorDefault="gray"
+            (valueChange)="onRateChange($event)"
+            ></ng-rating-bar>
+            <br>
+        </div>
+
+        <div class="mt-5">
+            <h5>Região / País</h5>
+            <ng-multiselect-dropdown
+            [placeholder]="'Selecione a região'"
+            [settings]="dropdownSettings"
+            [data]="countriesList"
+            (onSelect)="onCountrySelect($event)"
+            (onSelectAll)="onCountrySelectAll($event)"
+            (onDeSelect)="onCountryDeSelect($event)"
+            (onDeSelectAll)="onCountryDeSelectAll()"
+          >
+          </ng-multiselect-dropdown>
+          <br>
+        </div>
+
+        <div class="mt-5">
+            <h5>Tipo de Uva</h5>
+            <ng-multiselect-dropdown
+            [placeholder]="'Selecione a uva'"
+            [settings]="dropdownSettings"
+            [data]="grapesList"
+            (onSelect)="onGrapeSelect($event)"
+            (onSelectAll)="onGrapeSelectAll($event)"
+            (onDeSelect)="onGrapeDeSelect($event)"
+            (onDeSelectAll)="onGrapeDeSelectAll()"
+          >
+          </ng-multiselect-dropdown>
+        </div>
+
+        <div class="mt-5">
+            <h5>Harmozinações</h5>
+            <ng-multiselect-dropdown
+            [placeholder]="'Selecione a harmonização'"
+            [settings]="dropdownSettings"
+            [data]="harmsList"
+            (onSelect)="onHarmSelect($event)"
+            (onSelectAll)="onHarmSelectAll($event)"
+            (onDeSelect)="onHarmDeSelect($event)"
+            (onDeSelectAll)="onHarmDeSelectAll()"
+          >
+          </ng-multiselect-dropdown>
+            <br>
+        </div>
+    </div>
+
+    <div class="col-10">
+
+        <div class="container-fluid search-result">
+            <h4>Sua pesquisa retornou {{wines_found}} vinho(s)</h4>
+        </div>
+        
+        <a *ngFor="let wine of wines">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 mt-3">
+                        <div class="card">
+                            <div class="card-horizontal">
+                                <div class="img-square-wrapper card-image-slot">
+                                    <img class="card-image" src={{wine.image}} alt="Card image cap">
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title wine-title">{{wine.name}}</h4>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><b>País:</b> {{wine.country}}</li>
+                                        <li class="list-group-item"><b>Produtor:</b> {{wine.producer}}</li>
+                                        <li class="list-group-item"><b>Tipo de Uva:</b> {{wine.grape}}</li>
+                                        <li class="list-group-item"><b>Tipo de Vinho:</b> {{wine.type}}</li>
+                                        <li class="list-group-item"><b>Harmonizações:</b> {{wine.harmonizing}}</li>
+                                        <li class="list-group-item"><b>Preço:</b> R$ {{wine.price}}</li>
+                                        <li class="list-group-item"><b>Nota:</b>
+                                            <ng-rating-bar
+                                            [value]=wine.score
+                                            [ratingCount]="5"
+                                            [disabled]="true"
+                                        ></ng-rating-bar>
+                                        <button (click)="showReviews()" class="card-link card-button">Reviews</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div *ngIf="showReviewsDiv">
+                                <div class="card-footer wc-bg">
+                                </div>
+                                <a *ngFor="let review of wine.reviews">
+                                    <div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item sub"><b>Usuário:</b> {{review.name}}</li>
+                                            <li class="list-group-item sub"><b>Data:</b> {{review.date}}</li>
+                                            <li class="list-group-item sub"><b>Review:</b> {{review.review}}</li>
+                                            <li class="list-group-item sub"><b>Nota:</b>
+                                                <ng-rating-bar
+                                                [value]=review.score
+                                                [ratingCount]="5"
+                                                [disabled]="true"
+                                            ></ng-rating-bar>
+                                        </ul>
+                                    </div>
+                                    <hr style="border: 1px solid #5E1224;">
+                                </a>
+                            </div>
+                            <div class="card-footer wc-bg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+        </a>
+    </div>
+

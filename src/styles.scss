@@ -1,0 +1,173 @@
+
+body, ul, li, p, a, label, input, div {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px !important;
+    font-weight: 300 !important;
+  }
+  
+  .btn-primary,
+  .btn-primary:hover,
+  .btn-primary:active,
+  .btn-primary:visited,
+  .btn-primary:focus {
+      background-color: #5E1224;
+      border-color: #5E1224;
+  }
+  
+  .wc-side .li {
+    text-align: center;
+  }
+  
+  .h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 48px !important;
+    font-weight: 200 !important;
+  }
+  
+  .wc-bg {
+    background-color: #5E1224;
+  }
+  
+  .wc-bg-darker {
+    background-color: #5E1224;
+    filter: brightness(85%);
+  }
+  
+  .wc-classification {
+    background-color: #F5F5F5;
+  }
+  
+  .navbar {
+   background-color: #5E1224;
+  }
+  
+  .wc-title {
+    color: #5E1224;
+  }
+  
+  .wc-text {
+    color: white;
+  }
+  
+  nav .navbar-nav li a{
+    color: white !important;
+  }
+  
+  nav .navbar-nav nav-link a{
+    color: #5E1224;
+  }
+  
+  nav .navbar-brand {
+    color: white !important;
+  }
+  
+  .wc-search {
+    border-right: 4px solid #5E1224;
+    padding: 15px;
+  }
+  
+  #wc_nav a { color: #212934;}
+  #wc_nav a { color: #212934;}
+  #wc_nav a:hover { color: #69bb7e;}
+  #wc_nav .navbar .nav-icon { margin-right: 20px;}
+  @media (min-width: 768px) {
+    #wc_nav .navbar-nav {max-width: 450px;}
+   }
+   @media (min-width: 992px) {
+     #wc_nav .navbar-nav {max-width: 550px;}
+   }
+  
+  
+  #wc_footer {background-color: #5E1224; color: white}
+  #wc_footer a { color: white;}
+  #wc_footer a:hover { font-weight: bold;}
+  #wc_footer i { color: white;}
+  #wc_footer ul.footer-link-list li { padding-top: 10px;}
+  #wc_footer ul.footer-icons li {
+    width: 2.6em;
+    height: 2.6em;
+    line-height: 2.6em;
+  }
+  
+  #wc_footer .border-light { border-color: #2d343f !important;}
+
+
+  .ngx-slider {
+    background: #5E1224 !important;
+  }
+
+  .ngx-slider-pointer  {
+    background-color: #5E1224 !important;
+  }
+
+  .ngx-slider .ngx-slider-selection {
+    z-index: 2;
+    background: #5E1224 !important;
+    border-radius: 2px;
+}
+
+.ngx-slider .ngx-slider-pointer.ngx-slider-active:after  {
+  background-color: #3f000f !important;
+}
+
+.selected-item {
+  background-color: #5E1224 !important;
+  border: black !important;
+}
+
+.multiselect-item-checkbox:before {
+  color: #5E1224 !important;
+  border: 2px solid #5E1224 !important;
+  background: #5E1224 !important;
+}
+
+.multiselect-item-checkbox:after {
+  color: #5E1224 !important;
+  border: 2px solid #5E1224 !important;
+  background: #5E1224 !important;
+}
+
+.multiselect-item-checkbox:before {
+  background: #5E1224 !important;
+}
+
+.card-horizontal {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.card-image-slot {
+  max-height:100%; 
+  width: 400px;
+}
+
+.card-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; 
+  max-height:350px; 
+  max-width:100%;
+}
+
+.wine-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.search-result {
+  text-align: right;
+  margin-bottom: 40px;
+}
+
+.card-button {
+  margin-top: 8px;
+  float: right;
+  background-color: #5E1224;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+}
+
+.sub {
+  font-size: smaller !important;
+}
