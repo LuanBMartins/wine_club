@@ -8,13 +8,38 @@ import {ApiService} from '../../service/api.service'
 })
 export class UserProfileWineComponent implements OnInit {
 
-  constructor() { }
+  wines: any = [];
+  wines_found: number = 0;
+  showReviewsDiv: boolean = false
+
+  constructor(
+    private apiService: ApiService
+  ) { }
 
   ngOnInit(): void {
+    this.wines = this.getWines();
+  }
+
+  get myWines() {
+    return this.wines.controls;
   }
 
   getWines() {
-    
+    this.apiService.searchWineId({ids: [3, 5]}).subscribe(data => {
+      console.log();
+      console.log(data);
+      this.wines = data;
+      this.wines_found = data.length
+    });
+  }
+
+  showReviews(){
+    if (this.showReviewsDiv){
+      this.showReviewsDiv=false;
+    }
+    else{
+      this.showReviewsDiv=true;
+    }
   }
 
 }
