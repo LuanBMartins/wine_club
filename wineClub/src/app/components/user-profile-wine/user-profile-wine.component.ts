@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ApiService} from '../../service/api.service'
 
 @Component({
   selector: 'app-user-profile-wine',
@@ -10,6 +11,10 @@ export class UserProfileWineComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  getWines() {
+    
   }
 
 }

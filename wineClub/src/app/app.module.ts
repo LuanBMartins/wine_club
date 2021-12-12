@@ -19,6 +19,7 @@ import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UserProfileWineComponent } from './components/user-profile-wine/user-profile-wine.component';
+import { UserProfileWineCreateComponent } from './components/user-profile-wine-create/user-profile-wine-create.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { UserProfileWineComponent } from './components/user-profile-wine/user-pr
     LogoutComponent,
     UserProfileComponent,
     UserProfileWineComponent,
+    UserProfileWineCreateComponent,
   ],
   imports: [
     BrowserModule,
