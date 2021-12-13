@@ -1,6 +1,9 @@
 const db = require("../models/wine");
 const Wines = db.Mongoose.model('winecollection', db.WineSchema, 'winecollection');
 
+const dbUser = require("../models/user")
+const User = dbUser.Mongoose.model('usercollection', dbUser.UserSchema, 'usercollection');
+
 exports.findAll = () => {
     return Wines.find().select('name')
 }
@@ -13,4 +16,8 @@ exports.searchWine = (itens) => {
 exports.searchId = (consult) => {
     console.log(consult);
     return Wines.find(consult)
+}
+
+exports.searchUser = (filter) => {
+    return User.findOne(filter).select('wines')
 }

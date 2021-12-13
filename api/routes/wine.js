@@ -9,9 +9,10 @@ router.post('/', (req, res) => {
 
   Wines.find().sort({"_id" : -1}).limit(1).exec(
     function (e, r) {
-      var id = r[0] ? r[0].id : 0;
+      const id = r[0] ? r[0].id : 0;
+      console.log(id);
       var wine = new Wines({
-        "id": id + 1,
+        "id":  id ? id + 1 : 1,
         "name": req.body.name.substring(0, 150),
         "producer": req.body.producer.substring(0, 150),
         "image": req.body.image,
@@ -28,7 +29,10 @@ router.post('/', (req, res) => {
       
       Users.updateOne({id: parseInt(req.body.user_id)}, {$push: {wines: id + 1}}).exec()
       wine.save(
-        function (f, re) {
+        function (error, re) {
+          if(error){
+            res.status(400).send(error)
+          }
           res.json(re);
         })
   })
@@ -120,10 +124,10 @@ router.post('/search/advanced', async (req, res) => {
   }
 })
 
-router.post('/search/wines', async (req, res) => {
+router.get('/search/wines/:id', async (req, res) => {
   try {
-    const ids = req.body.ids
-    const response = await wineService.searchId(ids)
+    const id = req.params.id
+    const response = await wineService.searchId(id)
     console.log(response);
     res.send(response)
   

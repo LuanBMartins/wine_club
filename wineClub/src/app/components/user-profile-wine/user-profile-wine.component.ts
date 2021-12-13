@@ -25,7 +25,9 @@ export class UserProfileWineComponent implements OnInit {
   }
 
   getWines() {
-    this.apiService.searchWineId({ids: [3, 5]}).subscribe(data => {
+    const id = parseInt(localStorage.getItem('userId'));
+
+    this.apiService.searchWineId(id).subscribe(data => {
       console.log();
       console.log(data);
       this.wines = data;

@@ -99,7 +99,12 @@ export class UserProfileWineCreateComponent implements OnInit {
     this.submitted = true;
     const dataValid = ['name', 'producer', 'country', 'grape', 'type', 'price', 'harmonizing', 'image']
     const filter = dataValid.filter(item => !this.wineForm.value[item])
-    if(filter.length >= 1){
+
+    if(!this.nameValidador){
+      window.alert(`Vinho já existente em nossa base de dados!`)
+      return false;
+    }
+    else if(filter.length >= 1){
       window.alert(`Por favor preencher todos os campos!`)
       return false;
     }

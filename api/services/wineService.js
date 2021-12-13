@@ -24,7 +24,11 @@ exports.searchWine = (itens) => {
     }
 }
 
-exports.searchId = (id) => {
-    return Wine.searchId({'id': {$in: id}})
+exports.searchId = async (id) => {
+    const arrayIds = await Wine.searchUser({'id': {$in: id}})
+    
+    
+    console.log(arrayIds);
+    return Wine.searchId({'id': {$in: arrayIds.wines}})
 }
 
