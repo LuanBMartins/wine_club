@@ -25,6 +25,6 @@ exports.searchWine = (itens) => {
 }
 
 exports.searchId = (id) => {
-    return Wine.searchId({id: {$in: id}})
+    return Wine.searchId({'id': {$in: id}})
 }
 
