@@ -9,7 +9,6 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 
 export class ApiService {
   
-  baseUri:string = 'http://localhost:3000';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }
@@ -17,7 +16,7 @@ export class ApiService {
   // ----- USER API ------
 
   createUser(data: any): Observable<any> {
-    let url = `${this.baseUri}/user`;
+    let url = `/user`;
     return this.http.post(url, data)
       .pipe(
         catchError(this.errorHandler)
@@ -25,11 +24,11 @@ export class ApiService {
   }
 
   getUsers() {
-    return this.http.get(`${this.baseUri}`);
+    return this.http.get(``);
   }
 
   getUser(id: number): Observable<any> {
-    let url = `${this.baseUri}/user/${id}`;
+    let url = `/user/${id}`;
     return this.http.get(url, {headers: this.headers}).pipe(
       map((res: any) => {
         return res || {}
@@ -39,21 +38,21 @@ export class ApiService {
   }
 
   updateUser(id: number, data: any): Observable<any> {
-    let url = `${this.baseUri}/user/${id}`;
+    let url = `/user/${id}`;
     return this.http.patch(url, data, { headers: this.headers }).pipe(
       catchError(this.errorHandler)
     )
   }
 
   deleteUser(id: number): Observable<any> {
-    let url = `${this.baseUri}/user/${id}`;
+    let url = `/user/${id}`;
     return this.http.delete(url, { headers: this.headers }).pipe(
       catchError(this.errorHandler)
     )
   }
 
   login(data: any): Observable<any> {
-    let url = `${this.baseUri}/user/login`;
+    let url = `/user/login`;
     return this.http.post(url, data)
       .pipe(
         catchError(this.errorHandler)
@@ -63,7 +62,7 @@ export class ApiService {
   // WINE API
 
   searchWine(data: any): Observable<any> {
-    let url = `${this.baseUri}/wine/search/advanced`;
+    let url = `/wine/search/advanced`;
     return this.http.post(url, data)
       .pipe(
         catchError(this.errorHandler)
