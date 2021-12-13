@@ -45,6 +45,17 @@ export class ApiService {
     )
   }
 
+  updateUserWine(id: number, data: any): Observable<any> {
+    // Faltar criar a rota
+    let url = `${this.baseUri}/wine/user/${id}`;
+
+    console.log(data);
+    
+    return this.http.patch(url, data, { headers: this.headers }).pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
   deleteUser(id: number): Observable<any> {
     let url = `${this.baseUri}/user/${id}`;
     return this.http.delete(url, { headers: this.headers }).pipe(

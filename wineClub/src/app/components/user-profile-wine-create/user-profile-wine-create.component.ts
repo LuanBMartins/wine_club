@@ -11,9 +11,12 @@ import { FormGroup, FormBuilder, Validators, AbstractControl, FormControl } from
 export class UserProfileWineCreateComponent implements OnInit {
 
   submitted = false;
+  nameValidador: boolean = true
+  name: string = ''
   erros = {}
   wineForm: FormGroup;
   options: any = []
+
 
   constructor(
     public fb: FormBuilder,
@@ -37,6 +40,28 @@ export class UserProfileWineCreateComponent implements OnInit {
     this.options = this.getName()
   }
 
+  validatorName(event: any): void {
+    this.name = event
+    this.options.includes(event) ? this.nameValidador = false : this.nameValidador = true 
+  }
+
+  onClick(): void {
+    const id = parseInt(localStorage.getItem('userId'));
+
+    this.apiService.updateUserWine(id, {name: this.name}).subscribe(
+      (res) => {
+        if (res) {
+          window.alert('Vinho adicionado a sua lista com sucesso!');
+          this.ngZone.run(() => this.router.navigateByUrl('/profile/wine'))
+        }
+        else {            
+          window.alert('Erro ao cadastrar! Tente novamente.');
+        }
+      }, (error) => {
+        console.log(error);
+      });
+  }
+
   getName(): any {
     this.apiService.searchWineName().subscribe( (res) => {
       const array: Array<string> = []
@@ -47,6 +72,8 @@ export class UserProfileWineCreateComponent implements OnInit {
       
       if(array.length >= 1) {
         this.options = array
+        console.log(this.options);
+        
       }
     })
   }
@@ -67,7 +94,8 @@ export class UserProfileWineCreateComponent implements OnInit {
   }
 
   onSubmit() {
-
+    console.log(this.nameValidador);
+    
     this.submitted = true;
     const dataValid = ['name', 'producer', 'country', 'grape', 'type', 'price', 'harmonizing', 'image']
     const filter = dataValid.filter(item => !this.wineForm.value[item])
