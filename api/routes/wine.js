@@ -62,6 +62,19 @@ router.patch('/:id', (req, res) =>{
   })
 })
 
+// update wine wine reviews
+router.patch('/:id/review', async (req, res) =>{
+  try {
+    const id = req.params.id
+    const review = req.body
+    const response = await wineService.attWineReview(id, review)
+    res.status(200).send(response)
+  } catch (error) {
+    console.log(error);
+    res.status(error.status || 500).send(error.message || 'unexpected error')
+  }
+})
+
 // update user wine-list
 router.patch('/user/:id', async (req, res) =>{
   try {

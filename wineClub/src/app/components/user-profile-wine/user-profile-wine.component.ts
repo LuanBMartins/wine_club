@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import {ApiService} from '../../service/api.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile-wine',
@@ -13,7 +14,9 @@ export class UserProfileWineComponent implements OnInit {
   showReviewsDiv: boolean = false
 
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private ngZone: NgZone,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -22,6 +25,11 @@ export class UserProfileWineComponent implements OnInit {
 
   get myWines() {
     return this.wines.controls;
+  }
+
+  addReviews(item: any): void {
+    localStorage.setItem('idWine', item.target.id)
+    this.ngZone.run(() => this.router.navigateByUrl('/wine/review'))
   }
 
   getWines() {

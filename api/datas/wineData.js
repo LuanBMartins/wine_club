@@ -22,10 +22,20 @@ exports.searchId = (consult) => {
     return Wines.find(consult)
 }
 
+exports.searchReviews = (consult) => {
+    console.log(consult);
+    return Wines.findOne(consult).select('reviews')
+}
+
+exports.attWineReview = (id, review) => {
+    return Wines.updateOne(id, review)
+}
+
+
 exports.searchUser = (filter) => {
     return User.findOne(filter).select('wines')
 }
 
-exports.attWineLista = (id, wine) => {
+exports.attWine = (id, wine) => {
     return User.updateOne(id, wine)
 }

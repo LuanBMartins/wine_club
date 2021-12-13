@@ -20,6 +20,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UserProfileWineComponent } from './components/user-profile-wine/user-profile-wine.component';
 import { UserProfileWineCreateComponent } from './components/user-profile-wine-create/user-profile-wine-create.component';
+import { WineReviewComponent } from './components/wine-review/wine-review.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { UserProfileWineCreateComponent } from './components/user-profile-wine-c
     UserProfileComponent,
     UserProfileWineComponent,
     UserProfileWineCreateComponent,
+    WineReviewComponent,
   ],
   imports: [
     BrowserModule,

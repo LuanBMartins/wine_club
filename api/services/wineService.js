@@ -35,5 +35,14 @@ exports.attWineLista = async (idUser, name) => {
     const {wines} = await Wine.searchUser({'id': {$in: idUser}}) 
     const {id} = await Wine.searchIdWine({'name': {$in: name}})
     const array = [...wines, id]
-    return Wine.attWineLista({id: idUser}, {wines: array})
+    return Wine.attWine({id: idUser}, {wines: array})
+}
+
+exports.attWineReview = async (idWiner, review) => {
+    console.log(review);
+    const {reviews} = await Wine.searchReviews({'id': {$in: idWiner}})
+    console.log(reviews);
+    const array = [...reviews, review]
+    console.log(array);
+    return Wine.attWineReview({id: idWiner}, {reviews: array})
 }

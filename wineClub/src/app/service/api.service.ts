@@ -81,6 +81,14 @@ export class ApiService {
       )
   }
 
+  searchWineWithId(id: any): Observable<any> {
+    let url = `${this.baseUri}/wine/${id}`;
+    return this.http.get(url)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
   searchWineName(): Observable<any> {
     let url = `${this.baseUri}/wine/search/names`;
     return this.http.get(url)
@@ -105,6 +113,16 @@ export class ApiService {
         catchError(this.errorHandler)
       )
   }
+
+  reviewWine(id: number, data: any): Observable<any> {
+    const url = `${this.baseUri}/wine/${id}/review/`
+
+    return this.http.patch(url, data)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+  
 
   errorHandler(error: HttpErrorResponse) {
     let errorMessage = '';

@@ -48,6 +48,7 @@
                                         [disabled]="true"
                                     ></ng-rating-bar>
                                     <button (click)="showReviews()" class="card-link card-button">Reviews</button>
+                                    <button id="{{wine.id}}" (click)="addReviews($event)" class="card-link card-button">Adicionar Review</button>
                                     </li>
                                 </ul>
                             </div>
