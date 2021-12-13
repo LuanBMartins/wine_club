@@ -13,6 +13,7 @@ export class UserProfileWineCreateComponent implements OnInit {
   submitted = false;
   erros = {}
   wineForm: FormGroup;
+  options: any = []
 
   constructor(
     public fb: FormBuilder,
@@ -33,6 +34,21 @@ export class UserProfileWineCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.options = this.getName()
+  }
+
+  getName(): any {
+    this.apiService.searchWineName().subscribe( (res) => {
+      const array: Array<string> = []
+      const resArray = res
+      resArray.forEach((item: {name: string, _id: string}) => {
+          array.push(item['name'])
+      })
+      
+      if(array.length >= 1) {
+        this.options = array
+      }
+    })
   }
 
   onFileInput(event: any | null): void {

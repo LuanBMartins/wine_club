@@ -70,6 +70,14 @@ export class ApiService {
       )
   }
 
+  searchWineName(): Observable<any> {
+    let url = `${this.baseUri}/wine/search/names`;
+    return this.http.get(url)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
   searchWineId(data: any): Observable<any> {
     let url = `${this.baseUri}/wine/search/wines`;
     return this.http.post(url, data)
