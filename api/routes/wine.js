@@ -62,6 +62,18 @@ router.patch('/:id', (req, res) =>{
   })
 })
 
+// update user wine-list
+router.patch('/user/:id', async (req, res) =>{
+  try {
+    userId = req.params.id
+    wine = req.body.name
+    const response = await wineService.attWineLista(userId, wine)
+    res.status(200).send(response)
+  } catch (error) {
+    res.status(error.status || 500).send(error.message || 'unexpected error')
+  }
+})
+
 
 // Delete wine
 router.delete('/:id', (req, res) =>{
