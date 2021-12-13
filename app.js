@@ -11,10 +11,19 @@ var wineRouter = require('./routes/wine');
 
 var app = express();
 
+function requireHTTPS(req, res, next) {
+  // The 'x-forwarded-proto' check is for Heroku
+  if (!req.secure && req.get('x-forwarded-proto') !== 'https') {
+      return res.redirect('https://' + req.get('host') + req.url);
+  }
+  next();
+}
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(requireHTTPS);
 app.use(cors())
 app.use(logger('dev'));
 app.use(express.json());
