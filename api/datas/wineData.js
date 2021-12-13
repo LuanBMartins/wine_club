@@ -39,3 +39,28 @@ exports.searchUser = (filter) => {
 exports.attWine = (id, wine) => {
     return User.updateOne(id, wine)
 }
+
+exports.attScores = async (id, review) => {
+    Wines.findOne({"id": id}).lean().exec(
+        function (e, wine) {
+            const scores = wine.reviews.map(a => a.score);
+            const old_rate = scores.reduce((a, b) => a + b, 0)
+
+            const new_rate = (old_rate + review.score) / (scores.length + 1);
+
+            console.log('DEBUGGER NEW RATE',new_rate);
+    
+            Wines.findOneAndUpdate(
+                {id: parseInt(id)}, 
+                {$push: {reviews: review}, $set: {score: new_rate}}, 
+                {new: true}
+                ).exec(
+                    function (f, r) {
+                        if(f){
+                            return false
+                        }
+
+                        return r
+                    })
+    })
+}

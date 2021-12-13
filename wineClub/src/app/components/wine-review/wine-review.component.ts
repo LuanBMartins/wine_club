@@ -57,7 +57,6 @@ export class WineReviewComponent implements OnInit {
       name: localStorage.getItem('userName'),
       review: this.wineForm.value.review || '',
       score: this.score,
-      date: new Date().toDateString()
     }
 
     this.apiService.reviewWine(parseInt(localStorage.getItem('idWine')), review).subscribe(res => {

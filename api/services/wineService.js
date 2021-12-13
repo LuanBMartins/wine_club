@@ -44,5 +44,12 @@ exports.attWineReview = async (idWiner, review) => {
     console.log(reviews);
     const array = [...reviews, review]
     console.log(array);
+
+    const attScore = await Wine.attScores(idWiner, review)
+    console.log(attScore);
+
+   if(attScore) {
+       throw new error('', 500)
+   }
     return Wine.attWineReview({id: idWiner}, {reviews: array})
 }
