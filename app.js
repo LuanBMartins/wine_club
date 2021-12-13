@@ -51,6 +51,14 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(process.env.PORT || 3000);
 
+// Serve only the static files form the dist directory
+app.use(express.static('./dist/wineClub'));
+
+app.get('/*', (req, res) =>
+    res.sendFile('index.html', {root: 'dist/wineClub/'}),
+);
+
+// Start the app by listening on the default Heroku port
+app.listen(process.env.PORT || 8080);
 module.exports = app;
