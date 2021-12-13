@@ -1,0 +1,84 @@
+
+<div class="titulo-perfil">
+    <h1 class="btn-primary">Meu Perfil</h1>
+</div>
+        
+<section class="perfil btn-primary" >
+    <div class="dados"><h2> <a href="./edit" class="btn btn-primary">Informações do Perfil</a> </h2></div>
+    <div class="wine"><h2> <a href="./profile/wine" class="btn btn-primary">Meus vinhos</a> </h2></div>
+</section>
+
+
+<section class="content-wine">
+    <h1 class="titulo">Meus Vinhos</h1>
+    <div>
+        <a href="profile/wine/create"><button class="btn btn-primary button1">Inserir vinho</button></a>
+    </div>
+</section>
+
+
+<div class="col-10">
+
+    <div class="container-fluid search-result">
+        <h4>Você possui {{wines_found}} vinho(s) em sua lista</h4>
+    </div>
+    
+    <a *ngFor="let wine of wines">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <div class="card">
+                        <div class="card-horizontal">
+                            <div class="img-square-wrapper card-image-slot">
+                                <img class="card-image" src={{wine.image}} alt="Card image cap">
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title wine-title">{{wine.name}}</h4>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><b>País:</b> {{wine.country}}</li>
+                                    <li class="list-group-item"><b>Produtor:</b> {{wine.producer}}</li>
+                                    <li class="list-group-item"><b>Tipo de Uva:</b> {{wine.grape}}</li>
+                                    <li class="list-group-item"><b>Tipo de Vinho:</b> {{wine.type}}</li>
+                                    <li class="list-group-item"><b>Harmonizações:</b> {{wine.harmonizing}}</li>
+                                    <li class="list-group-item"><b>Preço:</b> R$ {{wine.price}}</li>
+                                    <li class="list-group-item"><b>Nota:</b>
+                                        <ng-rating-bar
+                                        [value]=wine.score
+                                        [ratingCount]="5"
+                                        [disabled]="true"
+                                    ></ng-rating-bar>
+                                    <button (click)="showReviews()" class="card-link card-button">Reviews</button>
+                                    <button id="{{wine.id}}" (click)="addReviews($event)" class="card-link card-button">Adicionar Review</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div *ngIf="showReviewsDiv">
+                            <div class="card-footer wc-bg">
+                            </div>
+                            <a *ngFor="let review of wine.reviews">
+                                <div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item sub"><b>Usuário:</b> {{review.name}}</li>
+                                        <li class="list-group-item sub"><b>Data:</b> {{review.date}}</li>
+                                        <li class="list-group-item sub"><b>Review:</b> {{review.review}}</li>
+                                        <li class="list-group-item sub"><b>Nota:</b>
+                                            <ng-rating-bar
+                                            [value]=review.score
+                                            [ratingCount]="5"
+                                            [disabled]="true"
+                                        ></ng-rating-bar>
+                                    </ul>
+                                </div>
+                                <hr style="border: 1px solid #5E1224;">
+                            </a>
+                        </div>
+                        <div class="card-footer wc-bg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br>
+    </a>
+</div>

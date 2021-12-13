@@ -14,13 +14,26 @@ h2 {
     text-align: center;
 }
 
+.titulo {
+    text-align: center;
+    font-size: 30px;
+}
+
 .perfil {
     display: flex;
     margin: 10px;
 }
 
 .dados, .wine {
-    width: 50%;
+    padding-left: 20%;
+    width: 40%;
     text-align: center;
-    border: 1px solid;
+}
+
+.button1 {
+    margin: 10px;
+}
+
+.forms-content {
+    margin-bottom: 500px;
 }

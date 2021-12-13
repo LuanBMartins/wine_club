@@ -1,0 +1,124 @@
+
+<div class="titulo-perfil">
+    <h1 class="btn-primary">Meu Perfil</h1>
+</div>
+        
+<section class="perfil btn-primary" >
+    <div class="dados"><h2> <a href="./edit" class="btn btn-primary">Informações do Perfil</a> </h2></div>
+    <div class="wine"><h2> <a href="./profile/wine" class="btn btn-primary">Meus vinhos</a> </h2></div>
+</section>
+
+
+<section class="content-wine">
+    <h1 class="titulo">Meus Vinhos</h1>
+    <div>
+        <a href="profile/wine/create"><button class="btn btn-primary button1">Inserir vinho</button></a>
+    </div>
+</section>
+
+
+<div class="col-10">
+    <a *ngIf="wines">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <div class="card">
+                        <div class="card-horizontal">
+                            <div class="img-square-wrapper card-image-slot">
+                                <img class="card-image" src={{wines.image}} alt="Card image cap">
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title wine-title">{{wines.name}}</h4>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><b>País:</b> {{wines.country}}</li>
+                                    <li class="list-group-item"><b>Produtor:</b> {{wines.producer}}</li>
+                                    <li class="list-group-item"><b>Tipo de Uva:</b> {{wines.grape}}</li>
+                                    <li class="list-group-item"><b>Tipo de Vinho:</b> {{wines.type}}</li>
+                                    <li class="list-group-item"><b>Harmonizações:</b> {{wines.harmonizing}}</li>
+                                    <li class="list-group-item"><b>Preço:</b> R$ {{wines.price}}</li>
+                                    <li class="list-group-item"><b>Nota:</b>
+                                        <ng-rating-bar
+                                        [value]=wines.score
+                                        [ratingCount]="5"
+                                        [disabled]="true"
+                                    ></ng-rating-bar>
+                                   
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-footer wc-bg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br>
+    </a>
+</div>
+
+<div *ngIf="wines">
+
+    <section style="margin-bottom: 10px;">
+        <div class="container h-100 wc-bg">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-12 col-xl-11">
+            <div class="card text-black" >
+                <div class="card-body p-md-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+    
+                    <form class="mx-1 mx-md-4" [formGroup]="wineForm" (ngSubmit)="onSubmit()">
+    
+                        <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                            <input type="text" 
+                            style="font-size:20pt;height:80px"
+                            id="inputRev" class="form-control" formControlName="review"       
+                            autofocus
+                            />
+                            <label class="form-label" for="inputRev">Review</label>
+                        </div>
+                        </div>
+
+                        <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                            <div class="form-outline flex-fill mb-0">
+                                <h5>Nota</h5>
+                                <ng-rating-bar 
+                                [(value)]="value" 
+                                [ratingCount]="ratingCount"
+                                [resetAble]="true"
+                                colorActive="#5E1224" 
+                                colorDefault="gray"
+                                (valueChange)="onRateChange($event)"
+                                ></ng-rating-bar>
+                                <br>
+                            </div>
+                        </div>
+    
+                        
+                        <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                            <button 
+                            (change)="onSubmit()"
+                            type="submit" class="btn btn-primary btn-lg">Registrar review</button>
+                        </div>
+    
+                    </form>
+    
+                    </div>
+                    <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+    
+    
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    
+    
+</div>

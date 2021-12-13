@@ -1,4 +1,5 @@
 const Wine = require('../datas/wineData')
+const wine = require('../models/wine')
 const error = require('../utils/error')
 
 exports.findAll = () => {
@@ -22,4 +23,33 @@ exports.searchWine = (itens) => {
     }else{
         return Wine.searchWine({})
     }
+}
+
+exports.searchId = async (id) => {
+    const arrayIds = await Wine.searchUser({'id': {$in: id}})
+    console.log(arrayIds);
+    return Wine.searchId({'id': {$in: arrayIds.wines}})
+}
+
+exports.attWineLista = async (idUser, name) => {
+    const {wines} = await Wine.searchUser({'id': {$in: idUser}}) 
+    const {id} = await Wine.searchIdWine({'name': {$in: name}})
+    const array = [...wines, id]
+    return Wine.attWine({id: idUser}, {wines: array})
+}
+
+exports.attWineReview = async (idWiner, review) => {
+    console.log(review);
+    const {reviews} = await Wine.searchReviews({'id': {$in: idWiner}})
+    console.log(reviews);
+    const array = [...reviews, review]
+    console.log(array);
+
+    const attScore = await Wine.attScores(idWiner, review)
+    console.log(attScore);
+
+   if(attScore) {
+       throw new error('', 500)
+   }
+    return Wine.attWineReview({id: idWiner}, {reviews: array})
 }

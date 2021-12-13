@@ -45,6 +45,17 @@ export class ApiService {
     )
   }
 
+  updateUserWine(id: number, data: any): Observable<any> {
+    // Faltar criar a rota
+    let url = `${this.baseUri}/wine/user/${id}`;
+
+    console.log(data);
+    
+    return this.http.patch(url, data, { headers: this.headers }).pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
   deleteUser(id: number): Observable<any> {
     let url = `${this.baseUri}/user/${id}`;
     return this.http.delete(url, { headers: this.headers }).pipe(
@@ -69,6 +80,49 @@ export class ApiService {
         catchError(this.errorHandler)
       )
   }
+
+  searchWineWithId(id: any): Observable<any> {
+    let url = `${this.baseUri}/wine/${id}`;
+    return this.http.get(url)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
+  searchWineName(): Observable<any> {
+    let url = `${this.baseUri}/wine/search/names`;
+    return this.http.get(url)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
+  searchWineId(id: any): Observable<any> {
+    let url = `${this.baseUri}/wine/search/wines/${id}`;
+    return this.http.get(url)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
+  createWine(data: any): Observable<any> {
+    const url = `${this.baseUri}/wine`
+
+    return this.http.post(url, data)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
+  reviewWine(id: number, data: any): Observable<any> {
+    const url = `${this.baseUri}/wine/${id}/review/`
+
+    return this.http.patch(url, data)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+  
 
   errorHandler(error: HttpErrorResponse) {
     let errorMessage = '';
