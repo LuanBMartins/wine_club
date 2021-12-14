@@ -112,6 +112,7 @@ export class UserProfileWineCreateComponent implements OnInit {
     this.options.includes(event) ? this.nameValidador = false : this.nameValidador = true 
   }
 
+
   onClick(): void {
     const id = parseInt(localStorage.getItem('userId'));
 
@@ -199,5 +200,31 @@ export class UserProfileWineCreateComponent implements OnInit {
         });
     }
   }
+  
+  autocompleteMatch(input: string) {
+    if (input == '') {
+      return [];
+    }
+    var reg = new RegExp(input)
+    return this.options.filter(function(term: string) {
+      if (term.match(reg)) {
+        return term;
+      }
+    });
+  }
+
+  autocomplete(event: any): void {
+    console.log(event.target.value);
+    console.log(event.target.id);
+    let res = document.getElementById("result");
+    res.innerHTML = '';
+    let list = '';
+    let terms = this.autocompleteMatch(event.target.value);
+    for (let i = 0; i<terms.length; i++) {
+      list += terms[i] + '<br>'
+    }
+    res.innerHTML = list
+  }
+
 
 }

@@ -21,7 +21,7 @@
     
                     <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Registrar Vinho</p>
     
-                    <form class="mx-1 mx-md-4" [formGroup]="wineForm" (ngSubmit)="onSubmit()">
+                    <form class="mx-1 mx-md-4" [formGroup]="wineForm" (ngSubmit)="onSubmit()" autocomplete="off">
     
                         <div class="d-flex flex-row align-items-center mb-4">
                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
@@ -29,11 +29,12 @@
                             <input type="text" id="inputName" class="form-control" formControlName="name"
                             #myName
                             (keyup)="validatorName(myName.value)"
+                            (keyup)="autocomplete($event)"
                             autofocus
-                            autocomplete="{{options}}"
                             />
                             <label class="form-label" for="inputName"
                             >Nome</label>
+                            <div id="result" class="complete"></div>
                             <div  *ngIf="!nameValidador">
                                 <p class="btn-primary">Este Vinho já possui cadastro!</p> 
                                 <button (click)="onClick()"  type="button" class="btn btn-primary button2"> Adicioná-lo a sua lista</button>
@@ -148,3 +149,4 @@
     
     
 </div>
+
