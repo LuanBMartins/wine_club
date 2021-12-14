@@ -81,6 +81,14 @@ export class ApiService {
       )
   }
 
+  updateWine(id: number, data: any): Observable<any> {
+    let url = `${this.baseUri}/wine/${id}`;
+    return this.http.patch(url, data)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
   searchWineWithId(id: any): Observable<any> {
     let url = `${this.baseUri}/wine/${id}`;
     return this.http.get(url)

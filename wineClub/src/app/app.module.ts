@@ -21,6 +21,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { UserProfileWineComponent } from './components/user-profile-wine/user-profile-wine.component';
 import { UserProfileWineCreateComponent } from './components/user-profile-wine-create/user-profile-wine-create.component';
 import { WineReviewComponent } from './components/wine-review/wine-review.component';
+import { UserProfileWineUpdateComponent } from './components/user-profile-wine-update/user-profile-wine-update.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { WineReviewComponent } from './components/wine-review/wine-review.compon
     UserProfileWineComponent,
     UserProfileWineCreateComponent,
     WineReviewComponent,
+    UserProfileWineUpdateComponent,
   ],
   imports: [
     BrowserModule,
