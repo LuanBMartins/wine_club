@@ -102,18 +102,6 @@ export class UserProfileWineCreateComponent implements OnInit {
     ];
   }
 
-// ANALISAR
-//   onChanges(){
-//     this.searchForm.get('searchBar').valueChanges.pipe(
-//        filter( data => data.trim().length > 0 ),
-//        debounceTime(500),
-//        switchMap(  (id: string) => {
-//           return id ? this.serachService.searchingValue(id.replace(/[\s]/g,'')) : of([]);
-//        })
-//     ).subscribe(data =>{
-//        this.searchResult = data as Array<{}>; 
-//     })
-//  }
 
   ngOnInit(): void {
     this.options = this.getName()
@@ -123,12 +111,6 @@ export class UserProfileWineCreateComponent implements OnInit {
     this.name = event
     this.options.includes(event) ? this.nameValidador = false : this.nameValidador = true 
   }
-
-  // changeCity(e: any) {
-  //   this.wineForm.value.countr.setValue(e.target.value, {
-  //     onlySelf: true
-  //   })
-  // }
 
   onClick(): void {
     const id = parseInt(localStorage.getItem('userId'));
