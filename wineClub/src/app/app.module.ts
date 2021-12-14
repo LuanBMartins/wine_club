@@ -17,6 +17,10 @@ import { ApiService } from './service/api.service';
 import { AdvancedSearchComponent } from './components/advanced-search/advanced-search.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { UserProfileWineComponent } from './components/user-profile-wine/user-profile-wine.component';
+import { UserProfileWineCreateComponent } from './components/user-profile-wine-create/user-profile-wine-create.component';
+import { WineReviewComponent } from './components/wine-review/wine-review.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,10 @@ import { LogoutComponent } from './components/logout/logout.component';
     AdvancedSearchComponent,
     LoginComponent,
     LogoutComponent,
+    UserProfileComponent,
+    UserProfileWineComponent,
+    UserProfileWineCreateComponent,
+    WineReviewComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,9 +9,10 @@ router.post('/', (req, res) => {
 
   Wines.find().sort({"_id" : -1}).limit(1).exec(
     function (e, r) {
-      var id = r[0] ? r[0].id : 0;
+      const id = r[0] ? r[0].id : 0;
+      console.log(id);
       var wine = new Wines({
-        "id": id + 1,
+        "id":  id ? id + 1 : 1,
         "name": req.body.name.substring(0, 150),
         "producer": req.body.producer.substring(0, 150),
         "image": req.body.image,
@@ -28,7 +29,10 @@ router.post('/', (req, res) => {
       
       Users.updateOne({id: parseInt(req.body.user_id)}, {$push: {wines: id + 1}}).exec()
       wine.save(
-        function (f, re) {
+        function (error, re) {
+          if(error){
+            res.status(400).send(error)
+          }
           res.json(re);
         })
   })
@@ -56,6 +60,31 @@ router.patch('/:id', (req, res) =>{
     function (f, r) {
       res.json(r);
   })
+})
+
+// update wine wine reviews
+router.patch('/:id/review', async (req, res) =>{
+  try {
+    const id = req.params.id
+    const review = req.body
+    const response = await wineService.attWineReview(id, review)
+    res.status(200).send(response)
+  } catch (error) {
+    console.log(error);
+    res.status(error.status || 500).send(error.message || 'unexpected error')
+  }
+})
+
+// update user wine-list
+router.patch('/user/:id', async (req, res) =>{
+  try {
+    userId = req.params.id
+    wine = req.body.name
+    const response = await wineService.attWineLista(userId, wine)
+    res.status(200).send(response)
+  } catch (error) {
+    res.status(error.status || 500).send(error.message || 'unexpected error')
+  }
 })
 
 
@@ -112,6 +141,18 @@ router.post('/search/advanced', async (req, res) => {
     const itens = req.body
     console.log(itens)
     const response = await wineService.searchWine(itens)
+    console.log(response);
+    res.send(response)
+  
+  } catch (error) {
+    res.status(error.status || 500).send(error.message || 'unexpected error')
+  }
+})
+
+router.get('/search/wines/:id', async (req, res) => {
+  try {
+    const id = req.params.id
+    const response = await wineService.searchId(id)
     console.log(response);
     res.send(response)
   
