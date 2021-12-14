@@ -54,15 +54,27 @@
                         <div class="d-flex flex-row align-items-center mb-4">
                         <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                         <div class="form-outline flex-fill mb-0">
-                            <input type="text" id="inputCountry" class="form-control" formControlName="country"/>
+                            <select style="width:345px;" name="country" id="0"
+                            placeholder="Estado"
+                            formControlName="country"
+                            id="inputCountry" class="form-control">
+                                <option value="" *ngFor="let c of countriesList" [ngValue]="c"> {{c}} </option>
+                            </select>
                             <label class="form-label" for="inputCountry">País</label>
+
+
                         </div>
                         </div>
     
                         <div class="d-flex flex-row align-items-center mb-4">
                             <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                             <div class="form-outline flex-fill mb-0">
-                                <input type="text" id="inputUva" class="form-control" formControlName="grape"/>
+                                <select style="width:345px;" name="country" id="0"
+                                placeholder="Uva"
+                                formControlName="grape"
+                                id="inputCountry" class="form-control">
+                                    <option value="" *ngFor="let g of grapesList" [ngValue]="g"> {{g}} </option>
+                                </select>
                                 <label class="form-label" for="inputUva">Tipo de Uva</label>
                             </div>
                         </div>
@@ -70,15 +82,25 @@
                         <div class="d-flex flex-row align-items-center mb-4">
                             <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                             <div class="form-outline flex-fill mb-0">
-                                <input type="text" id="inputVinho" class="form-control" formControlName="type"/>
+                                <select style="width:345px;" name="country" id="0"
+                                placeholder="Vinho"
+                                formControlName="type"
+                                id="inputCountry" class="form-control">
+                                    <option value="" *ngFor="let t of typesList" [ngValue]="t"> {{t}} </option>
+                                </select>
                                 <label class="form-label" for="inputVinho">Tipo de Vinho</label>
                             </div>
                         </div>
 
                         <div class="d-flex flex-row align-items-center mb-4">
                             <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                            <div class="form-outline flex-fill mb-0">
-                                <input type="text" id="inputHarmo" class="form-control" formControlName="harmonizing"/>
+                            <div class="form-outline flex-fill mb-0">                                
+                                <select style="width:345px;" name="country" id="0"
+                                placeholder="Harmonizações"
+                                formControlName="harmonizing"
+                                id="inputCountry" class="form-control">
+                                    <option value="" *ngFor="let h of harmsList" [ngValue]="h"> {{h}} </option>
+                                </select>
                                 <label class="form-label" for="inputHarmo">Harmonizações</label>
                             </div>
                         </div>
