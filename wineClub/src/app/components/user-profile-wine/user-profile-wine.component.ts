@@ -27,6 +27,12 @@ export class UserProfileWineComponent implements OnInit {
     return this.wines.controls;
   }
 
+  editWine(item: any): void {
+
+    localStorage.setItem('idWine', item.target.id)
+    this.ngZone.run(() => this.router.navigateByUrl('/profile/wine/update'))
+  }
+
   addReviews(item: any): void {
     localStorage.setItem('idWine', item.target.id)
     this.ngZone.run(() => this.router.navigateByUrl('/wine/review'))

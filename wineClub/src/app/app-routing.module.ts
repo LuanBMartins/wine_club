@@ -10,6 +10,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { UserProfileWineComponent } from './components/user-profile-wine/user-profile-wine.component';
 import { UserProfileWineCreateComponent } from './components/user-profile-wine-create/user-profile-wine-create.component'
 import { WineReviewComponent } from './components/wine-review/wine-review.component'
+import { UserProfileWineUpdateComponent } from './components/user-profile-wine-update/user-profile-wine-update.component'
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'advanced-search' },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'profile/wine', component: UserProfileWineComponent },
   { path: 'profile/wine/create', component: UserProfileWineCreateComponent },
   { path: 'wine/review', component: WineReviewComponent },
+  { path: 'profile/wine/update', component: UserProfileWineUpdateComponent },
 ];
 
 @NgModule({
