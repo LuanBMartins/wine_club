@@ -32,11 +32,14 @@ router.post('/', (req, res) => {
 
 // Read user
 router.get('/:id?', (req, res) =>{
+  console.log("entrou");
   var db = require("../models/user");
   var Users = db.Mongoose.model('usercollection', db.UserSchema, 'usercollection');
 
   Users.findOne({"id": parseInt(req.params.id)}).lean().exec(
     function (e, user) {
+      console.log("Fez req mongo");
+      console.log(user);
       res.json(user);
     })
 })
