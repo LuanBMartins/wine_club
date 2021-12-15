@@ -26,11 +26,9 @@
                         <div class="d-flex flex-row align-items-center mb-4">
                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                         <div class="form-outline flex-fill mb-0">
-                            <input type="text" id="inputName" class="form-control" 
+                            <input type="text" id="inputName" class="form-control"  formControlName="name"
                             #myName
                             placeholder={{wines.name}}
-                            disabled
-                            autocomplete="{{options}}"
                             />
                             <label class="form-label" for="inputName"
                             >Nome</label>
@@ -44,8 +42,8 @@
                         <div class="form-outline flex-fill mb-0">
                             <input  type="text" id="inputProd" 
                             placeholder={{wines.producer}}
-                            disabled
-                            class="form-control" />
+                            class="form-control"
+                            formControlName="producer"/> 
                             <label class="form-label" for="inputProd">Produtor</label>
                         </div>
                         </div>
@@ -53,10 +51,10 @@
                         <div class="d-flex flex-row align-items-center mb-4">
                         <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                         <div class="form-outline flex-fill mb-0">
-                            <select style="width:345px;" name="country" id="0"
-                            disabled
+                            <select style="width:345px;" name="country" id="0" formControlName="country"
                             id="inputCountry" class="form-control">
                                 <option value="" > {{wines.country}} </option>
+                                <option value="" *ngFor="let c of countriesList" [ngValue]="c"> {{c}} </option>
                             </select>
                             <label class="form-label" for="inputCountry">País</label>
 
@@ -68,9 +66,10 @@
                             <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                             <div class="form-outline flex-fill mb-0">
                                 <select style="width:345px;" name="country" id="0"
-                                disabled
+                                formControlName="grape"
                                 id="inputCountry" class="form-control">
                                     <option value=""> {{wines.grape}} </option>
+                                    <option value="" *ngFor="let g of grapesList" [ngValue]="g"> {{g}} </option>
                                 </select>
                                 <label class="form-label" for="inputUva">Tipo de Uva</label>
                             </div>
@@ -81,9 +80,10 @@
                             <div class="form-outline flex-fill mb-0">
                                 <select style="width:345px;" name="country" id="0"
                                 placeholder="Vinho"
-                                disabled
+                                formControlName="type"
                                 id="inputCountry" class="form-control">
                                     <option value=""> {{wines.type}} </option>
+                                    <option value="" *ngFor="let t of typesList" [ngValue]="t"> {{t}} </option>
                                 </select>
                                 <label class="form-label" for="inputVinho">Tipo de Vinho</label>
                             </div>
@@ -105,9 +105,9 @@
                         <div class="d-flex flex-row align-items-center mb-4">
                             <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                             <div class="form-outline flex-fill mb-0">
-                                <input type="text" id="inputPrice" 
+                                <input type="number" id="inputPrice" 
                                 placeholder={{wines.price}}
-                                disabled
+                                formControlName="price"
                                 class="form-control" />
                                 <label class="form-label" for="inputPrice">Preço</label>
                             </div>

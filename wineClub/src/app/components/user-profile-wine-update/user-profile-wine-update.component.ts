@@ -28,14 +28,14 @@ export class UserProfileWineUpdateComponent implements OnInit {
     private ngZone: NgZone,
   ) {
     this.wineForm = new FormGroup({
-      name: new FormControl('',Validators.required),
-      producer: new FormControl('',Validators.required),
-      country: new FormControl('',Validators.required),
-      grape: new FormControl('',Validators.required),
-      type: new FormControl('',Validators.required),
-      harmonizing: new FormControl('',Validators.required),
-      price: new FormControl('',Validators.required),
-      image: new FormControl('',Validators.required),
+      name: new FormControl(this.wines.name,Validators.required),
+      producer: new FormControl(this.wines.producer,Validators.required),
+      country: new FormControl(this.wines.country,Validators.required),
+      grape: new FormControl(this.wines.grape,Validators.required),
+      type: new FormControl(this.wines.type,Validators.required),
+      harmonizing: new FormControl(this.wines.harmonizing || '',Validators.required),
+      price: new FormControl(this.wines.price,Validators.required),
+      
     })
 
     this.grapesList = [
@@ -97,7 +97,6 @@ export class UserProfileWineUpdateComponent implements OnInit {
       'Branco',
       'Espumante',
       'Fortificado',
-      'Sobremesa',
     ];
     
    }
@@ -126,38 +125,39 @@ export class UserProfileWineUpdateComponent implements OnInit {
     const dataValid = ['name', 'producer', 'country', 'grape', 'type', 'price', 'harmonizing', 'image']
     const filter = dataValid.filter(item => !this.wineForm.value[item])
 
+    console.log(this.wineForm.value);
+    
+
     if(filter.length === 8){
       window.alert(`Nenhuma edição fornecida!`)
       return false;
     }
     else 
     {
-            
-      let valid = true
-      
-      this.wines.harmonizing.forEach((item: string) => {
-        if(this.wineForm.value.harmonizing === item.trim()){
-          valid = false
-          stop
-        }
-      })
-
-      console.log(valid);
-      
-      if(!valid){
-        window.alert(`Item de Harmonização já existente!`)
-        return false;
-      }else {
-        if(this.wines.harmonizing.length === 0){
+          
+        if(!this.wines.harmonizing && this.wineForm.value.harmonizing){
+          this.wines.harmonizing = [this.wineForm.value.harmonizing]
+        }else if(this.wineForm.value.harmonizing && !this.wines.harmonizing.includes(this.wineForm.value.harmonizing)){
           this.wines.harmonizing.push(this.wineForm.value.harmonizing)
-        }else {
-          this.wines.harmonizing.push(' ' + this.wineForm.value.harmonizing)
         }
         console.log(this.wines.harmonizing);
+
+        const body = {
+          name: this.wineForm.value.name || this.wines.name,
+          producer: this.wineForm.value.producer || this.wines.producer,
+          country: this.wineForm.value.country || this.wines.country,
+          grape: this.wineForm.value.grape || this.wines.grape,
+          type: this.wineForm.value.type || this.wines.type,
+          harmonizing: this.wines.harmonizing,
+          price: this.wineForm.value.price || this.wines.price,
+        }
+
+        console.log(body);
+        
         
         this.apiService.updateWine(
           parseInt(localStorage.getItem('idWine')),
-          { harmonizing: this.wines.harmonizing }
+          body
           ).subscribe(
           (res) => {
             if (res) {
@@ -171,7 +171,7 @@ export class UserProfileWineUpdateComponent implements OnInit {
           }, (error) => {
             console.log(error);
           });
-      }
+      
       
     }
   }
