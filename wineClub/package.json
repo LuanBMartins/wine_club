@@ -29,6 +29,7 @@
     "ng-multiselect-dropdown": "^0.3.7",
     "ng-rating-bar": "^1.0.2",
     "ngx-slider": "0.0.5",
+    "path": "^0.12.7",
     "rxjs": "~7.4.0",
     "save": "^2.4.0",
     "tslib": "^2.3.0",
