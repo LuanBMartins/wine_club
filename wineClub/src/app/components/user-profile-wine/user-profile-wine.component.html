@@ -47,14 +47,14 @@
                                         [ratingCount]="5"
                                         [disabled]="true"
                                     ></ng-rating-bar>
-                                    <button (click)="showReviews()" class="card-link card-button">Reviews</button>
+                                    <button (click)="showReviews(wine.id)" class="card-link card-button">Reviews</button>
                                     <button id="{{wine.id}}" (click)="addReviews($event)" class="card-link card-button">Adicionar Review</button>
                                     <button id="{{wine.id}}" (click)="editWine($event)" class="card-link card-button">Editar Vinho</button>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                        <div *ngIf="showReviewsDiv">
+                        <div *ngIf="showReviewsDiv && showReviewProdId == wine.id">
                             <div class="card-footer wc-bg">
                             </div>
                             <a *ngFor="let review of wine.reviews">

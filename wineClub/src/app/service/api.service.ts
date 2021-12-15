@@ -9,7 +9,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 
 export class ApiService {
   
-  baseUri:string = 'http://localhost:3000';
+  baseUri:string = 'https://wine-club-back.herokuapp.com';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }
@@ -123,7 +123,7 @@ export class ApiService {
   }
 
   reviewWine(id: number, data: any): Observable<any> {
-    const url = `${this.baseUri}/wine/${id}/review/`
+    const url = `${this.baseUri}/wine/rate/${id}/`
 
     return this.http.patch(url, data)
       .pipe(

@@ -12,6 +12,7 @@ export class UserProfileWineComponent implements OnInit {
   wines: any = [];
   wines_found: number = 0;
   showReviewsDiv: boolean = false
+  showReviewProdId: number = -1
 
   constructor(
     private apiService: ApiService,
@@ -49,12 +50,14 @@ export class UserProfileWineComponent implements OnInit {
     });
   }
 
-  showReviews(){
+  showReviews(wineId: number){
     if (this.showReviewsDiv){
       this.showReviewsDiv=false;
+      this.showReviewProdId=wineId;
     }
     else{
       this.showReviewsDiv=true;
+      this.showReviewProdId=wineId;
     }
   }
 

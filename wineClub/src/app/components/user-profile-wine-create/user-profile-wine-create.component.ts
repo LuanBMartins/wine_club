@@ -67,6 +67,7 @@ export class UserProfileWineCreateComponent implements OnInit {
     this.countriesList = [
       'França',
       'Itália',
+      'Brasil',
       'Espanha',
       'Chile',
       'Portugal',
@@ -90,6 +91,14 @@ export class UserProfileWineCreateComponent implements OnInit {
       'Sobremesa',
       'Aves',
       'Comida Picante',
+      'Cordeiro',
+      'Carne de Porco',
+      'Cogumelos',
+      'Aperitivo',
+      'Carne Curada',
+      'Massa',
+      'Marisco',
+      'Vegetariano',
     ];
 
     this.typesList = [
@@ -212,7 +221,10 @@ export class UserProfileWineCreateComponent implements OnInit {
           if (res) {
             window.alert('Cadastro realizado com sucesso!');
             console.log('Vinho criado com sucesso!');
-            this.ngZone.run(() => this.router.navigateByUrl('/profile/wine'))
+            this.router.navigate(['profile/wine'])
+            .then(() => {
+              window.location.reload();
+            });
           }
           else {            
             window.alert('Erro ao cadastrar! Tente novamente.');

@@ -61,7 +61,10 @@ export class WineReviewComponent implements OnInit {
 
     this.apiService.reviewWine(parseInt(localStorage.getItem('idWine')), review).subscribe(res => {
       window.alert('Review adicionada com sucesso!')
-      this.ngZone.run(() => this.router.navigateByUrl('/profile'))
+      this.router.navigate(['profile/wine'])
+      .then(() => {
+        window.location.reload();
+      });
     }, erro => {
       window.alert('Problemas ao cadastrar review, tente novamente mais tarde!')
     })

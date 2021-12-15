@@ -45,7 +45,6 @@ exports.attScores = async (id, review) => {
         function (e, wine) {
             const scores = wine.reviews.map(a => a.score);
             const old_rate = scores.reduce((a, b) => a + b, 0)
-
             const new_rate = (old_rate + review.score) / (scores.length + 1);
 
             console.log('DEBUGGER NEW RATE',new_rate);

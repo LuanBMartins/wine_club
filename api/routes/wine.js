@@ -86,10 +86,11 @@ router.patch('/rate/:id', (req, res) =>{
     let review = req.body;
     review.date = new Date().toISOString().slice(0, 10)
     const rate = parseFloat(review.score);
-
     Wines.findOne({"id": parseInt(req.params.id)}).lean().exec(
         function (e, wine) {
-            let new_rate = (wine.score + rate) / (wine.reviews.length + 1);
+            const scores = wine.reviews.map(a => a.score);
+            const old_rate = scores.reduce((a, b) => a + b, 0)
+            const new_rate = (old_rate + review.score) / (scores.length + 1);
     
             Wines.findOneAndUpdate(
                 {id: parseInt(req.params.id)}, 

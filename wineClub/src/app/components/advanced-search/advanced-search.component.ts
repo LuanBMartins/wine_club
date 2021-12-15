@@ -24,6 +24,7 @@ export class AdvancedSearchComponent implements OnInit {
     ) { }
 
   showReviewsDiv: boolean = false
+  showReviewProdId: number = -1
   wines: any = [];
   wines_found: number = 0;
   grapesList: any = [];
@@ -89,6 +90,7 @@ export class AdvancedSearchComponent implements OnInit {
     this.countriesList = [
       { item_type: 'country', item_text: 'França' },
       { item_type: 'country', item_text: 'Itália' },
+      { item_type: 'country', item_text: 'Brasil' },
       { item_type: 'country', item_text: 'Espanha' },
       { item_type: 'country', item_text: 'Argentina' },
       { item_type: 'country', item_text: 'Chile' },
@@ -114,6 +116,14 @@ export class AdvancedSearchComponent implements OnInit {
       { item_type: 'harm', item_text: 'Sobremesa' },
       { item_type: 'harm', item_text: 'Aves' },
       { item_type: 'harm', item_text: 'Comida Picante' },
+      { item_type: 'harm', item_text: 'Cordeiro' },
+      { item_type: 'harm', item_text: 'Carne de Porco' },
+      { item_type: 'harm', item_text: 'Cogumelos' },
+      { item_type: 'harm', item_text: 'Aperitivo' },
+      { item_type: 'harm', item_text: 'Carne Curada' },
+      { item_type: 'harm', item_text: 'Massa' },
+      { item_type: 'harm', item_text: 'Marisco' },
+      { item_type: 'harm', item_text: 'Vegetariano' },
     ];
 
     this.typesList = [
@@ -251,12 +261,14 @@ export class AdvancedSearchComponent implements OnInit {
     this.getWines();
   }
 
-  showReviews(){
+  showReviews(wineId: number){
     if (this.showReviewsDiv){
       this.showReviewsDiv=false;
+      this.showReviewProdId=wineId;
     }
     else{
       this.showReviewsDiv=true;
+      this.showReviewProdId=wineId;
     }
   }
 }
