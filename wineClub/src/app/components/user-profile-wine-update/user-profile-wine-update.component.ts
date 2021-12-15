@@ -65,6 +65,7 @@ export class UserProfileWineUpdateComponent implements OnInit {
     this.countriesList = [
       'França',
       'Itália',
+      'Brasil',
       'Espanha',
       'Chile',
       'Portugal',
@@ -88,7 +89,14 @@ export class UserProfileWineUpdateComponent implements OnInit {
       'Sobremesa',
       'Aves',
       'Comida Picante',
-      'massa'
+      'Cordeiro',
+      'Carne de Porco',
+      'Cogumelos',
+      'Aperitivo',
+      'Carne Curada',
+      'Massa',
+      'Marisco',
+      'Vegetariano',
     ];
 
     this.typesList = [
@@ -97,8 +105,8 @@ export class UserProfileWineUpdateComponent implements OnInit {
       'Branco',
       'Espumante',
       'Fortificado',
+      'Sobremesa',
     ];
-    
    }
 
   ngOnInit(): void {
@@ -163,7 +171,10 @@ export class UserProfileWineUpdateComponent implements OnInit {
             if (res) {
               window.alert('Item de harmonização adicionado com sucesso!');
               console.log('Vinho criado com sucesso!');
-              this.ngZone.run(() => this.router.navigateByUrl('/profile/wine/update'))
+              this.router.navigate(['profile/wine'])
+              .then(() => {
+                window.location.reload();
+              });
             }
             else {            
               window.alert('Erro ao cadastrar! Tente novamente.');
