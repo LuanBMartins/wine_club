@@ -42,11 +42,11 @@ export class AdvancedSearchComponent implements OnInit {
 
 
   minValue: number = 0;
-  maxValue: number = 5000;
+  maxValue: number = 1000;
   options: Options = {
     floor: 0,
-    ceil: 5000,
-    step: 10,
+    ceil: 1000,
+    step: 1,
     translate: (value: number, label: LabelType): string => {
       switch (label) {
         case LabelType.Low:
