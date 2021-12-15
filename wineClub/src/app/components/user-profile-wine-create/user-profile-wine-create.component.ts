@@ -150,9 +150,31 @@ export class UserProfileWineCreateComponent implements OnInit {
     if(event){
       const file: File = event[0]
 
+      const reader = new FileReader()
+
+      let img
+
+      reader.onloadend =  () =>  {
+        // Since it contains the Data URI, we should remove the prefix and keep only Base64 string
+        if(typeof reader.result === 'string'){ 
+          var b64 = reader.result.replace(/^data:.+;base64,/, '');
+          img = b64
+          
+          
+          this.wineForm.value.image = img
+          console.log(this.wineForm.value.image);
+          
+          // console.log(b64); //-> "R0lGODdhAQABAPAAAP8AAAAAACwAAAAAAQABAAACAkQBADs="
+        }
+      };
+    
+      reader.readAsDataURL(file);
+      
+      
+
       const data = new FormData()
       data.append('image', file, 'wine')
-      this.wineForm.value.image = data
+      
     }
   } 
 
@@ -185,7 +207,7 @@ export class UserProfileWineCreateComponent implements OnInit {
     {
       console.log(this.wineForm.value);
 
-      this.apiService.createWine(this.wineForm.value).subscribe(
+      this.apiService.createWine({...this.wineForm.value, user_id: parseInt(localStorage.getItem('userId'))}).subscribe(
         (res) => {
           if (res) {
             window.alert('Cadastro realizado com sucesso!');
@@ -214,8 +236,6 @@ export class UserProfileWineCreateComponent implements OnInit {
   }
 
   autocomplete(event: any): void {
-    console.log(event.target.value);
-    console.log(event.target.id);
     let res = document.getElementById("result");
     res.innerHTML = '';
     let list = '';
